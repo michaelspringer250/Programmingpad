@@ -16,7 +16,7 @@ namespace Programmingpad
         MALD = 7626,
         WCMD = 16324,
         CALCM = 30194,
-        ALCM = -30194
+        ALCM = -30194 // does this need to be just 30194?
     }
     class B52
     {
@@ -69,7 +69,13 @@ namespace Programmingpad
                 case Storage.Bay:
                     {
                         Bay.AddWeapon(_weapon);
-                        break;
+                        // make sure MALD and WCMD are not added to the Bay
+                        if (_weapon != Weapon.MALD && _weapon != Weapon.WCMD)
+                        {
+                            break;
+                        }
+                        // MALD and WCMD are added, throw an exception
+                        throw new LoadErrorException(string.Format("Incorrect weapons loaded into B-52 Bay"));
                     }
                 case Storage.Left:
                     {
@@ -131,6 +137,15 @@ public class WeightErrorException : Exception
 public class FuelErrorException : Exception
 {
     public FuelErrorException(string message)
+       : base(message)
+    {
+    }
+}
+
+// LoadErrorException, used when MALD or WCMD are added to the Bay 
+public class LoadErrorException : Exception
+{
+    public LoadErrorException(string message)
        : base(message)
     {
     }
