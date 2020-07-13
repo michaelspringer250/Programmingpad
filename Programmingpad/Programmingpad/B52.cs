@@ -100,7 +100,7 @@ namespace Programmingpad
 
         public int AddFuel(int _fuelWeight)
         {
-            if ((this.Fuel + _fuelWeight) < MIN_FUEL )
+            if ((this.Fuel + _fuelWeight) < MIN_FUEL || _fuelWeight < 0)
             {
                 throw new FuelErrorException(string.Format("Fuel does not meet minimum requirement {0}, current fuel {1}", MIN_FUEL, this.Fuel));
             }
