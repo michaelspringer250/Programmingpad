@@ -3,19 +3,30 @@
 using System.Collections.Generic;
 using System.Text;
 
+/*
+ * Group 2 - B52 Tinker Project - ProgrammingPad
+ * WeaponStorage.cs
+ */
+
 namespace Programmingpad
 {
+    /// <summary>
+    /// The class represents the storage for the different weapons
+    /// </summary>
     class WeaponStorage
     {
+        // Define the variables
+        private int _Gravity; // Gravity
+        private int _JASSM;   // Joint Air-to-Surface Standoff
+        private int _JDAM;    // Joint Direct Attack Munition
+        private int _MALD;    // Miniature Air Launched Decoy
+        private int _WCMD;    // Wind-Corrected Munitions Dispenser
+        private int _CALCM;   // Conventional Air Launched Cruised Missile
+        private int _ALCM;    // Air Launched Cruise Missle
 
-        private int _Gravity;
-        private int _JASSM;
-        private int _JDAM;
-        private int _MALD;
-        private int _WCMD;
-        private int _CALCM;
-        private int _ALCM;
-
+        /// <summary>
+        /// Construct a default WeaponStorage object
+        /// </summary>
         public WeaponStorage()
         {
             this.Gravity = 0;
@@ -26,6 +37,9 @@ namespace Programmingpad
             this.CALCM = 0;
             this.ALCM = 0;
         }
+        /// <summary>
+        /// Getters and Setters
+        /// </summary>
 
         public int Gravity { get => _Gravity; set => _Gravity = value; }
         public int JASSM { get => _JASSM; set => _JASSM = value; }
@@ -35,6 +49,14 @@ namespace Programmingpad
         public int CALCM { get => _CALCM; set => _CALCM = value; }
         public int ALCM { get => _ALCM; set => _ALCM = value; }
 
+        /// <summary>
+        /// Add weapon into the storage
+        /// </summary>
+        /// <param name="_weapon">
+        /// </param> different types of weapon
+        /// <returns>
+        /// error code 0 successful, -1 error
+        /// </returns>
         public int AddWeapon(Weapon _weapon)
         {
             switch(_weapon)
@@ -80,10 +102,30 @@ namespace Programmingpad
             return 0;
         }
 
+        /// <summary>
+        /// Calculate the total weight after adding the weapon
+        /// </summary>
+        /// <returns>
+        /// Returns the total weight
+        /// </returns>
         public int CalcWeight()
         {
             return this.Gravity * (int)Weapon.Gravity + this.JASSM * (int)Weapon.JASSM + this.JDAM * (int) Weapon.JDAM + this.MALD * (int)Weapon.MALD
                 + this.WCMD * (int) Weapon.WCMD + this.CALCM * (int) Weapon.CALCM + this.ALCM * System.Math.Abs((int) Weapon.ALCM);
+        }
+
+        /// <summary>
+        /// Clear all the weapons from the storage
+        /// </summary>
+        public void ClearWeapon()
+        {
+            this.Gravity = 0;
+            this.JASSM = 0;
+            this.JDAM = 0;
+            this.MALD = 0;
+            this.WCMD = 0;
+            this.CALCM = 0;
+            this.ALCM = 0;
         }
     }
 }
