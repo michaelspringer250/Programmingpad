@@ -25,9 +25,25 @@ namespace Programmingpad
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void AddWeapon(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Button clicked!");
+            MessageBox.Show("Weapon added");
+        }
+
+        private void AddFuel(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Fuel added");
+        }
+
+        private void ClearAllWeapons(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Weapons cleared");
+        }
+
+        private void ClearFuel (object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Fuel cleared");
         }
     }
 }

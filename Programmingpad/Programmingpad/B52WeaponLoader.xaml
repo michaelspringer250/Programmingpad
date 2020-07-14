@@ -5,12 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Programmingpad"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="900" d:DesignWidth="1600"
       Title="B-52 Weapon Loader">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -20,7 +19,69 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
-        <Button Grid.Column="0" Grid.Row="0" Click="Button_Click">Click Me</Button>
+        <!-- Image of currently selected weapon -->
+        <Image Grid.Column="0" Grid.Row="0" Source="ALCM-CALCM.png" Width="300" />
+        <!-- Grid with weapon and fuel adding -->
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!-- Select weapon to add -->
+            <ComboBox Grid.Column="0" Grid.Row="0" IsEditable="True" IsReadOnly="True" Text="Weapon to Add:">
+                <ComboBoxItem>JASSM</ComboBoxItem>
+                <ComboBoxItem>JDAM</ComboBoxItem>
+                <ComboBoxItem>MALD</ComboBoxItem>
+                <ComboBoxItem>WCMD</ComboBoxItem>
+                <ComboBoxItem>CALCM</ComboBoxItem>
+                <ComboBoxItem>ALCM</ComboBoxItem>
+            </ComboBox>
+            <Label Grid.Column="0" Grid.Row="1">Amount of fuel to add:</Label>
+            <!-- Error message -->
+            <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" />
+            <ComboBox Grid.Column="1" Grid.Row="0" IsEditable="True" IsReadOnly="True" Text="Location to Add to:">
+                <ComboBoxItem>Left Wing</ComboBoxItem>
+                <ComboBoxItem>Right Wing</ComboBoxItem>
+                <ComboBoxItem>Bay</ComboBoxItem>
+            </ComboBox>
+            <!-- User enters amount of fuel to add -->
+            <TextBox Grid.Column="1" Grid.Row="1"></TextBox>
+            <!-- Add Weapon button -->
+            <Button Grid.Column="2" Grid.Row="0" Click="AddWeapon">Add</Button>
+            <!-- Add fuel button -->
+            <Button Grid.Column="2" Grid.Row="1" Click="AddFuel">Add</Button>
+        </Grid>
+        <!-- Display information about the current weapons and fuel -->
+        <Grid Grid.Column="0" Grid.Row="2">
+            
+        </Grid>
+        <!-- Display acronyms for user -->
+        <Label Grid.Column="1" Grid.Row="0">
+            <TextBlock>Weapon Acronyms:<LineBreak /> JASSM - Joint Air-to-Surface Standoff<LineBreak />JDAM - Joint Direct Attack Munition<LineBreak />
+                MALD - Miniature Air Launched Decoy<LineBreak />WCMD - Wind-Corrected Munitions Dispenser<LineBreak />
+                CALCM - Conventional Air Launched Cruise Missile<LineBreak />ALCM - Air Launched Cruise Missile
+            </TextBlock>
+        </Label>
+        <!-- Grid with buttons to clear all weapons or fuel -->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <!-- Clear All Weapons button -->
+            <Button Grid.Column="0" Grid.Row="0" Click="ClearAllWeapons">Clear All Weapons</Button>
+            <!-- Clear Fuel button -->
+            <Button Grid.Column="1" Grid.Row="0" Click="ClearFuel">Clear Fuel</Button>
+        </Grid>
+        <Image Grid.Column="1" Grid.Row="2" Source="B-52 Top.png" Width="300" />
     </Grid>
 </Page>
