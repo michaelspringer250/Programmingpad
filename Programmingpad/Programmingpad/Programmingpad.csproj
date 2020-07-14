@@ -55,7 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="B52WeaponLoader.xaml.cs">
+      <DependentUpon>B52WeaponLoader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WeaponStorage.cs" />
+    <Page Include="B52WeaponLoader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,6 +102,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ALCM-CALCM.png" />
+    <Resource Include="B-52 Top.png" />
+    <Resource Include="Gravity.png" />
+    <Resource Include="JASSM.png" />
+    <Resource Include="JDAM.png" />
+    <Resource Include="MALD.png" />
+    <Resource Include="WCMD.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
