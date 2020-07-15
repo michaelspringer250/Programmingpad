@@ -35,13 +35,13 @@
             </Grid.RowDefinitions>
             <!-- Select weapon to add -->
             <ComboBox Name="WeaponComboBox" Grid.Column="0" Grid.Row="0" IsEditable="True" IsReadOnly="True" Text="Weapon to Add:" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                <ComboBoxItem>Gravity</ComboBoxItem>
-                <ComboBoxItem>JASSM</ComboBoxItem>
-                <ComboBoxItem>JDAM</ComboBoxItem>
-                <ComboBoxItem>MALD</ComboBoxItem>
-                <ComboBoxItem>WCMD</ComboBoxItem>
-                <ComboBoxItem>CALCM</ComboBoxItem>
-                <ComboBoxItem>ALCM</ComboBoxItem>
+                <ComboBoxItem>Gravity (7,988 lbs)</ComboBoxItem>
+                <ComboBoxItem>JASSM (24,946 lbs)</ComboBoxItem>
+                <ComboBoxItem>JDAM (9,722 lbs)</ComboBoxItem>
+                <ComboBoxItem>MALD (7,626 lbs)</ComboBoxItem>
+                <ComboBoxItem>WCMD (16,324 lbs)</ComboBoxItem>
+                <ComboBoxItem>CALCM (30,194 lbs)</ComboBoxItem>
+                <ComboBoxItem>ALCM (30,194 lbs)</ComboBoxItem>
             </ComboBox>
             <Label Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Amount of fuel to add</Label>
             <!-- Error message -->
