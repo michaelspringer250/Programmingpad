@@ -43,6 +43,7 @@ namespace Programmingpad
         const int MAX_WEIGHT = 485000;
         const int MIN_FUEL = 100000;
         const int MAX_FUEL = 300000;
+        const int INIT_WEIGHT = 185000;
 
         // Define the variables
         private WeaponStorage _bay;
@@ -66,7 +67,7 @@ namespace Programmingpad
             Bay = new WeaponStorage();
             LeftWing = new WeaponStorage();
             RightWing = new WeaponStorage();
-            Weight = 185000;
+            Weight = INIT_WEIGHT;
             Fuel = 0;
         }
 
@@ -193,6 +194,7 @@ namespace Programmingpad
             this._bay.ClearWeapon();
             this._leftWing.ClearWeapon();
             this._rightWing.ClearWeapon();
+            Weight = INIT_WEIGHT;
         }
 
         /// <summary>
