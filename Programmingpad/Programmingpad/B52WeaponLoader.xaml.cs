@@ -34,6 +34,7 @@ namespace Programmingpad
         {
             //String weapon = WeaponComboBox.Text;
             MessageBox.Show("Weapon added");
+
         }
 
         private void AddFuel(object sender, RoutedEventArgs e)
@@ -169,6 +170,7 @@ namespace Programmingpad
             }
 
             WeightLabel.Content = b52.CalcWeight();
+            
         }
 
         private void BayReg_Drop(object sender, DragEventArgs e)
@@ -223,6 +225,11 @@ namespace Programmingpad
             WeightLabel.Content = b52.CalcWeight();
         }
 
-       
+        private void LeftWingReg_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ToolTip t = new ToolTip();
+            t.Content = b52.LeftWing.ToString();
+            LeftWingReg.ToolTip = t;
+        }
     }
 }

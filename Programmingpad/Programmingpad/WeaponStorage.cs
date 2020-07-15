@@ -35,7 +35,12 @@ namespace Programmingpad
             this.MALD = 0;
             this.WCMD = 0;
             this.CALCM = 0;
-            this.ALCM = 0;
+            this.ALCM = 0;   
+        }
+
+        public override string ToString() 
+        {
+            return string.Format("Gravity {0} JASSM {1} JDAM {2} MALD {3} WCMD {4} CALCM {5} ALCM {6}", Gravity,JASSM,JDAM,MALD,WCMD,CALCM,ALCM);
         }
         /// <summary>
         /// Getters and Setters

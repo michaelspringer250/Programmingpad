@@ -32,13 +32,13 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Source="Images/Gravity.png" Name="Gravity" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="0" Grid.Column="1" Source="Images/JASSM.png" Name="JASSM" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
-                <Image Grid.Row="0" Grid.Column="2" Source="Images/JDAM.png" Name="JDAM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="1" Grid.Column="0" Source="Images/MALD.png" Name="MALD" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="1" Grid.Column="1" Source="Images/WCMD.png" Name="WCMD" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="1" Grid.Column="2" Source="Images/ALCM-CALCM.png" Name="CALCM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="2" Grid.Column="1" Source="Images/ALCM-CALCM.png" Name="ALCM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="0" Grid.Column="0" Source="Images/Gravity.png" ToolTip="Gravity" Name="Gravity" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="0" Grid.Column="1" Source="Images/JASSM.png" ToolTip="JASSM" Name="JASSM" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+                <Image Grid.Row="0" Grid.Column="2" Source="Images/JDAM.png" ToolTip="JDAM" Name="JDAM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="1" Grid.Column="0" Source="Images/MALD.png" ToolTip="MALD" Name="MALD" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="1" Grid.Column="1" Source="Images/WCMD.png" ToolTip="WCMD" Name="WCMD" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="1" Grid.Column="2" Source="Images/ALCM-CALCM.png" ToolTip="CALCM" Name="CALCM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="2" Grid.Column="1" Source="Images/ALCM-CALCM.png" ToolTip="ALCM" Name="ALCM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
                 
             </Grid>
             <Grid Grid.Row="1">
@@ -102,7 +102,7 @@
                 
             </Grid>
             <Image Grid.Row="1" Source="Images/B-52 Top.png" />
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="326,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" />
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="326,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="639,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop"/>
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="481,384,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop"/>
         </Grid>
