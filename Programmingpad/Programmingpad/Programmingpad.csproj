@@ -104,13 +104,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ALCM-CALCM.png" />
-    <Resource Include="B-52 Top.png" />
-    <Resource Include="Gravity.png" />
-    <Resource Include="JASSM.png" />
-    <Resource Include="JDAM.png" />
-    <Resource Include="MALD.png" />
-    <Resource Include="WCMD.png" />
+    <Resource Include="Images\ALCM-CALCM.png" />
+    <Resource Include="Images\B-52 Top.png" />
+    <Resource Include="Images\Gravity.png" />
+    <Resource Include="Images\JASSM.png" />
+    <Resource Include="Images\JDAM.png" />
+    <Resource Include="Images\MALD.png" />
+    <Resource Include="Images\WCMD.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
