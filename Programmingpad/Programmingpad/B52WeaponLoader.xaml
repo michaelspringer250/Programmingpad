@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Programmingpad"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1600"
-      Title="B-52 Weapon Loader">
+      Title="B-52 Weapon Loader" Height="900" Width="1600">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,13 +32,13 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Source="Gravity.png"/>
-                <Image Grid.Row="0" Grid.Column="1" Source="JASSM.png"/>
-                <Image Grid.Row="0" Grid.Column="2" Source="JDAM.png"/>
-                <Image Grid.Row="1" Grid.Column="0" Source="MALD.png"/>
-                <Image Grid.Row="1" Grid.Column="1" Source="WCMD.png"/>
-                <Image Grid.Row="1" Grid.Column="2" Source="ALCM-CALCM.png"/>
-                <Image Grid.Row="2" Grid.Column="1" Source="ALCM-CALCM.png"/>
+                <Image Grid.Row="0" Grid.Column="0" Source="Images/Gravity.png"/>
+                <Image Grid.Row="0" Grid.Column="1" Source="Images/JASSM.png"/>
+                <Image Grid.Row="0" Grid.Column="2" Source="Images/JDAM.png"/>
+                <Image Grid.Row="1" Grid.Column="0" Source="Images/MALD.png"/>
+                <Image Grid.Row="1" Grid.Column="1" Source="Images/WCMD.png"/>
+                <Image Grid.Row="1" Grid.Column="2" Source="Images/ALCM-CALCM.png"/>
+                <Image Grid.Row="2" Grid.Column="1" Source="Images/ALCM-CALCM.png"/>
                 
             </Grid>
             <Grid Grid.Row="1">
@@ -101,7 +101,7 @@
                 <Label Grid.Column="1" Name="WeightLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
                 
             </Grid>
-            <Image Grid.Row="1" Source="B-52 Top.png" />
+            <Image Grid.Row="1" Source="Images/B-52 Top.png" />
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="326,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" />
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="639,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg"/>
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="481,384,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg"/>
