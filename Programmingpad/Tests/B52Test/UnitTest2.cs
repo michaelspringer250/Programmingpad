@@ -2,22 +2,22 @@
 using Programmingpad;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
 namespace ProgrammingpadTest
 {
     [TestClass]
     public class B52Test
     {
         [TestMethod]
-        public void UnitTest1()
+        
+        public void TestMethod1()
         {
             // Arrange
-            B52 b52 = new B52();
-            int _fuel = 100000;
-            int expected = 285000;
+            
+            
+            int expected = 185000;
 
             // Act
-            int actual = b52.CaclWeight();
+            int actual = b52.CalcWeight();
 
             // Assert
             Assert.AreEqual(expected, actual);

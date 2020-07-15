@@ -28,6 +28,7 @@ namespace Programmingpad
 
         private void AddWeapon(object sender, RoutedEventArgs e)
         {
+            String weapon = WeaponComboBox.Text;
             MessageBox.Show("Weapon added");
         }
 
