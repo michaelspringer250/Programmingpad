@@ -203,7 +203,7 @@ namespace Programmingpad
                     }
             }
         }
-            private void LeftWingReg_MouseEnter(object sender, MouseEventArgs e)
+        private void LeftWingReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
             t.Content = b52.LeftWing.ToString();

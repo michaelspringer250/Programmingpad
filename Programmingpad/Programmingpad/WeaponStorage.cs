@@ -13,7 +13,7 @@ namespace Programmingpad
     /// <summary>
     /// The class represents the storage for the different weapons
     /// </summary>
-    class WeaponStorage
+    public class WeaponStorage
     {
         // Define the variables
         private int _Gravity; // Gravity

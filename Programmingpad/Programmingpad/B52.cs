@@ -38,7 +38,7 @@ namespace Programmingpad
     /// This class represents the B52 platform includes Bay, LeftWing, RightWing
     /// Different kind of weapons will be loaded onto the B-52 platform
     /// </summary>
-    class B52
+    public class B52
     {
         // Define the constant variables
         const int MAX_WEIGHT = 485000;
