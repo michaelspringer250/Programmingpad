@@ -9,11 +9,13 @@
       Title="B-52 Weapon Loader" Height="900" Width="1600">
 
     <Grid>
+        <!-- Divide original grid into 2 column -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Left outer column split into 3 rows -->
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -21,6 +23,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <!-- Divide 1 row into 3x3 grid for weapon images -->
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -32,6 +35,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+
+                <!-- Fill weapon images into 3x3 grid -->
                 <Image Grid.Row="0" Grid.Column="0" Source="Images/Gravity.png" ToolTip="Gravity" Name="GravityImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
                 <Image Grid.Row="0" Grid.Column="1" Source="Images/JASSM.png" ToolTip="JASSM" Name="JASSMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
                 <Image Grid.Row="0" Grid.Column="2" Source="Images/JDAM.png" ToolTip="JDAM" Name="JDAMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
@@ -41,6 +46,8 @@
                 <Image Grid.Row="2" Grid.Column="1" Source="Images/ALCM-CALCM.png" ToolTip="ALCM" Name="ALCMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
                 
             </Grid>
+
+            <!-- Divide 2nd sub row into 2x3 Grid-->
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -53,7 +60,7 @@
                 </Grid.ColumnDefinitions>
 
                 
-                <!-- Select weapon to add -->
+                <!-- add items for weapon row-->
                 <ComboBox Name="WeaponComboBox" Grid.Column="0" Grid.Row="0" IsEditable="True" IsReadOnly="True" Text="Weapon to Add:" Height="40" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                     <ComboBoxItem>Gravity</ComboBoxItem>
                     <ComboBoxItem>JASSM</ComboBoxItem>
@@ -63,16 +70,19 @@
                     <ComboBoxItem>CALCM</ComboBoxItem>
                     <ComboBoxItem>ALCM</ComboBoxItem>
                 </ComboBox>
+
                 <ComboBox Name="StorageComboBox" Grid.Column="1" Grid.Row="0" IsEditable="True" IsReadOnly="True" Text="Location to Add to:" Height="40" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                     <ComboBoxItem>Left Wing</ComboBoxItem>
                     <ComboBoxItem>Right Wing</ComboBoxItem>
                     <ComboBoxItem>Bay</ComboBoxItem>
                 </ComboBox>
                 <Button Grid.Column="2" Grid.Row="0" Height="40" Width="150" Click="AddWeapon">Add</Button>
-                <!-- Add fuel button -->
-                <Button Grid.Column="2" Grid.Row="1" Height="40" Width="150" Click="AddFuel">Add</Button>
+
+                <!-- Add fuel items for feul row -->
                 <Label Grid.Column="0" Grid.Row="2" Height="40" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Fuel</Label>
                 <TextBox Name="FuelTextBox" Grid.Column="1" Grid.Row="2" Height="40" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                <Button Grid.Column="2" Grid.Row="1" Height="40" Width="150" Click="AddFuel">Add</Button>
+
              
             </Grid>
             <Grid Grid.Row="2">
@@ -81,17 +91,19 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Grid.Row="0" Height="40" Width="150" Click="ClearAllWeapons">Clear All Weapons</Button>
-
                 <Button Grid.Column="1" Grid.Row="0" Height="40" Width="150" Click="ClearFuel">Clear Fuel</Button>
             </Grid>
         
         </Grid>
-
+        
+        <!-- divide the outer 2nd column into 2 rows -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
+
+            <!-- divide the 1st sub row into 5 column for information label-->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -100,14 +112,17 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+
+                <!-- Add information label for content row  -->
                 <Label Grid.Column="0" Content="Weight" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
                 <Label Grid.Column="1" Name="WeightLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
                 <Label Grid.Column="2" Content="Fuel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
                 <Label Grid.Column="3" Name="FuelLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
-                
                 <Label Grid.Column="4" Content="Status"  Name="StatusLabel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" Background="Red"/>
                 
             </Grid>
+
+            <!-- Add b52 image and storage reg for bottom row -->
             <Image Grid.Row="1" Source="Images/B-52 Top.png" />
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="326,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="639,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>

@@ -40,18 +40,27 @@ namespace Programmingpad
 
         private void AddFuel(object sender, RoutedEventArgs e)
         {
+            // Allow only positive number in the field
             if (System.Text.RegularExpressions.Regex.IsMatch(FuelTextBox.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter only numbers.");
-                FuelTextBox.Text = "100000" +
-                    "" +
-                    "" +
-                    "";
+                FuelTextBox.Text = "100000";
             }
             else
             {
                 int fuelWeight = int.Parse(FuelTextBox.Text);
-                b52.AddFuel(fuelWeight);
+                try
+                {
+                    b52.AddFuel(fuelWeight);
+                }
+                catch(FuelErrorException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch(WeightErrorException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 WeightLabel.Content = b52.CalcWeight();
                 FuelLabel.Content = b52.Fuel;
                 IsReady();

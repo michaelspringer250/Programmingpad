@@ -30,7 +30,7 @@ namespace Programmingpad
         MALD = 7626,    // Miniature Air Launched Decoy
         WCMD = 16324,   // Wind-Corrected Munitions Dispenser
         CALCM = 30194,  // Conventional Air Launched Cruised Missile
-        ALCM = -30194,   // Air Launched Cruise Missle
+        ALCM = -30194,   // Air Launched Cruise Missle, Can not have the same index within enum and use absolute value for calculating
         NONE = 0
     }
 
