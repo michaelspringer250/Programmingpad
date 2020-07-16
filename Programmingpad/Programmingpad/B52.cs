@@ -30,7 +30,8 @@ namespace Programmingpad
         MALD = 7626,    // Miniature Air Launched Decoy
         WCMD = 16324,   // Wind-Corrected Munitions Dispenser
         CALCM = 30194,  // Conventional Air Launched Cruised Missile
-        ALCM = -30194   // Air Launched Cruise Missle
+        ALCM = -30194,   // Air Launched Cruise Missle
+        NONE = 0
     }
 
     /// <summary>
@@ -113,7 +114,7 @@ namespace Programmingpad
         public int AddWeapon(Storage _storage, Weapon _weapon)
         {
             // Check if the total weight is over the maximum Take-off (ramp) weight
-            if (this.Weight + System.Math.Abs((int)_weapon)> MAX_WEIGHT)
+            if (this.CalcWeight() + System.Math.Abs((int)_weapon)> MAX_WEIGHT)
             {
                 throw new WeightErrorException(string.Format("Over take off weight limit {0}", MAX_WEIGHT));
             }
@@ -204,7 +205,6 @@ namespace Programmingpad
         {
             this.Fuel = 0;
         }
-
         
         
     }

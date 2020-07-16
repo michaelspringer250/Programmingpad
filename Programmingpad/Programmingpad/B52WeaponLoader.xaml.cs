@@ -27,6 +27,7 @@ namespace Programmingpad
             b52 = new B52();        
             InitializeComponent();
             WeightLabel.Content = b52.CalcWeight();
+            FuelLabel.Content = b52.Fuel;
         }
 
 
@@ -42,7 +43,10 @@ namespace Programmingpad
             if (System.Text.RegularExpressions.Regex.IsMatch(FuelTextBox.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter only numbers.");
-                FuelTextBox.Text = "";
+                FuelTextBox.Text = "100000" +
+                    "" +
+                    "" +
+                    "";
             }
             else
             {
@@ -50,10 +54,7 @@ namespace Programmingpad
                 b52.AddFuel(fuelWeight);
                 WeightLabel.Content = b52.CalcWeight();
                 FuelLabel.Content = b52.Fuel;
-                if(b52.IsReadyForTakeOff())
-                {
-                    StatusLabel.Background = Brushes.Green;
-                }
+                IsReady();
             }
 
             
@@ -70,9 +71,22 @@ namespace Programmingpad
         {
             b52.ClearFuel();
             WeightLabel.Content = b52.CalcWeight();
-            
+            FuelLabel.Content = b52.Fuel;
+            IsReady();           
+
         }
 
+        private void IsReady()
+        {
+            if(b52.IsReadyForTakeOff())
+            {
+                StatusLabel.Background = Brushes.Green;
+            }
+            else
+            {
+                StatusLabel.Background = Brushes.Red;
+            }
+        }
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Image i = (Image)sender;
@@ -86,50 +100,17 @@ namespace Programmingpad
         {
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
-            String weapon = (String)e.Data.GetData(typeof(String));
-            switch (weapon)
+            String weaponString = (String)e.Data.GetData(typeof(String));
+            try
             {
-                case "Gravity":
-                    {
-                        b52.AddWeapon(Storage.Left, Weapon.Gravity);
-                        break;
-                    }
-                case "JASSM":
-                    {
-                        b52.AddWeapon(Storage.Left, Weapon.JASSM);
-                        break;
-                    }
-                case "JDAM":
-                    {
-                        b52.AddWeapon(Storage.Left, Weapon.JDAM);
-                        break;
-                    }
-                case "MALD":
-                    {
-                        b52.AddWeapon(Storage.Left, Weapon.MALD);
-                        break;
-                    }
-                case "WCMD":
-                    {
-                        b52.AddWeapon(Storage.Left, Weapon.WCMD);
-                        break;
-                    }
-                case "CALCM":
-                    {
-                        b52.AddWeapon(Storage.Left, Weapon.CALCM);
-                        break;
-                    }
-                case "ALCM":
-                    {
-                        b52.AddWeapon(Storage.Left, Weapon.ALCM);
-                        break;
-                    }
-                default:
-                    {
-                        MessageBox.Show("Invalid weapon selection");
-                        break;
-                    }
+                Weapon weapon = StringtoWeapon(weaponString);
+                b52.AddWeapon(Storage.Left, weapon);
             }
+            catch (WeightErrorException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
 
             WeightLabel.Content = b52.CalcWeight();
         }
@@ -138,49 +119,15 @@ namespace Programmingpad
         {
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
-            String weapon = (String)e.Data.GetData(typeof(String));
-            switch (weapon)
+            String weaponString = (String)e.Data.GetData(typeof(String));
+            try
             {
-                case "Gravity":
-                    {
-                        b52.AddWeapon(Storage.Right, Weapon.Gravity);
-                        break;
-                    }
-                case "JASSM":
-                    {
-                        b52.AddWeapon(Storage.Right, Weapon.JASSM);
-                        break;
-                    }
-                case "JDAM":
-                    {
-                        b52.AddWeapon(Storage.Right, Weapon.JDAM);
-                        break;
-                    }
-                case "MALD":
-                    {
-                        b52.AddWeapon(Storage.Right, Weapon.MALD);
-                        break;
-                    }
-                case "WCMD":
-                    {
-                        b52.AddWeapon(Storage.Right, Weapon.WCMD);
-                        break;
-                    }
-                case "CALCM":
-                    {
-                        b52.AddWeapon(Storage.Right, Weapon.CALCM);
-                        break;
-                    }
-                case "ALCM":
-                    {
-                        b52.AddWeapon(Storage.Right, Weapon.ALCM);
-                        break;
-                    }
-                default:
-                    {
-                        MessageBox.Show("Invalid weapon selection");
-                        break;
-                    }
+                Weapon weapon = StringtoWeapon(weaponString);
+                b52.AddWeapon(Storage.Right, weapon);
+            }
+            catch (WeightErrorException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             WeightLabel.Content = b52.CalcWeight();
@@ -191,55 +138,63 @@ namespace Programmingpad
         {
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
-            String weapon = (String)e.Data.GetData(typeof(String));
-            switch (weapon)
+            String weaponString = (String)e.Data.GetData(typeof(String));
+            try
             {
-                case "Gravity":
-                    {
-                        b52.AddWeapon(Storage.Bay, Weapon.Gravity);
-                        break;
-                    }
-                case "JASSM":
-                    {
-                        b52.AddWeapon(Storage.Bay, Weapon.JASSM);
-                        break;
-                    }
-                case "JDAM":
-                    {
-                        b52.AddWeapon(Storage.Bay, Weapon.JDAM);
-                        break;
-                    }
-                case "MALD":
-                    {
-                        MessageBox.Show("Can not add MALD into Bay");
-                        break;
-                    }
-                case "WCMD":
-                    {
-                        MessageBox.Show("Can not add WCMD into Bay");
-                        break;
-                    }
-                case "CALCM":
-                    {
-                        b52.AddWeapon(Storage.Bay, Weapon.CALCM);
-                        break;
-                    }
-                case "ALCM":
-                    {
-                        b52.AddWeapon(Storage.Bay, Weapon.ALCM);
-                        break;
-                    }
-                default:
-                    {
-                        MessageBox.Show("Invalid weapon selection");
-                        break;
-                    }
+                Weapon weapon = StringtoWeapon(weaponString);
+                b52.AddWeapon(Storage.Bay, weapon);
+            }
+            catch (WeightErrorException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (LoadErrorException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             WeightLabel.Content = b52.CalcWeight();
         }
 
-        private void LeftWingReg_MouseEnter(object sender, MouseEventArgs e)
+        public Weapon StringtoWeapon(String weaponName)
+        {
+            switch (weaponName)
+            {
+                case "GravityImage":
+                    {
+                        return Weapon.Gravity;
+                    }
+                case "JASSMImage":
+                    {
+                        return Weapon.JASSM;
+                    }
+                case "JDAMImage":
+                    {
+                        return Weapon.JDAM;
+                    }
+                case "MALDImage":
+                    {
+                        return Weapon.MALD;
+                    }
+                case "WCMDImage":
+                    {
+                        return Weapon.WCMD;
+                    }
+                case "CALCMImage":
+                    {
+                        return Weapon.CALCM;
+                    }
+                case "ALCMImage":
+                    {
+                        return Weapon.ALCM;
+                    }
+                default:
+                    {
+                        return Weapon.NONE;
+                    }
+            }
+        }
+            private void LeftWingReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
             t.Content = b52.LeftWing.ToString();

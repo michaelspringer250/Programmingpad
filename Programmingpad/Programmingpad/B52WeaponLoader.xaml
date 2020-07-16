@@ -32,13 +32,13 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Source="Images/Gravity.png" ToolTip="Gravity" Name="Gravity" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="0" Grid.Column="1" Source="Images/JASSM.png" ToolTip="JASSM" Name="JASSM" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
-                <Image Grid.Row="0" Grid.Column="2" Source="Images/JDAM.png" ToolTip="JDAM" Name="JDAM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="1" Grid.Column="0" Source="Images/MALD.png" ToolTip="MALD" Name="MALD" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="1" Grid.Column="1" Source="Images/WCMD.png" ToolTip="WCMD" Name="WCMD" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="1" Grid.Column="2" Source="Images/ALCM-CALCM.png" ToolTip="CALCM" Name="CALCM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-                <Image Grid.Row="2" Grid.Column="1" Source="Images/ALCM-CALCM.png" ToolTip="ALCM" Name="ALCM" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="0" Grid.Column="0" Source="Images/Gravity.png" ToolTip="Gravity" Name="GravityImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="0" Grid.Column="1" Source="Images/JASSM.png" ToolTip="JASSM" Name="JASSMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+                <Image Grid.Row="0" Grid.Column="2" Source="Images/JDAM.png" ToolTip="JDAM" Name="JDAMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="1" Grid.Column="0" Source="Images/MALD.png" ToolTip="MALD" Name="MALDImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="1" Grid.Column="1" Source="Images/WCMD.png" ToolTip="WCMD" Name="WCMDImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="1" Grid.Column="2" Source="Images/ALCM-CALCM.png" ToolTip="CALCM" Name="CALCMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                <Image Grid.Row="2" Grid.Column="1" Source="Images/ALCM-CALCM.png" ToolTip="ALCM" Name="ALCMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
                 
             </Grid>
             <Grid Grid.Row="1">
