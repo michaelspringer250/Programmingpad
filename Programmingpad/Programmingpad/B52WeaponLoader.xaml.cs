@@ -39,9 +39,23 @@ namespace Programmingpad
 
         private void AddFuel(object sender, RoutedEventArgs e)
         {
-            int fuelWeight = int.Parse(FuelTextBox.Text);
-            b52.AddFuel(fuelWeight);
-            WeightLabel.Content = b52.CalcWeight();
+            if (System.Text.RegularExpressions.Regex.IsMatch(FuelTextBox.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                FuelTextBox.Text = "";
+            }
+            else
+            {
+                int fuelWeight = int.Parse(FuelTextBox.Text);
+                b52.AddFuel(fuelWeight);
+                WeightLabel.Content = b52.CalcWeight();
+                FuelLabel.Content = b52.Fuel;
+                if(b52.IsReadyForTakeOff())
+                {
+                    StatusLabel.Background = Brushes.Green;
+                }
+            }
+
             
         }
 
@@ -230,6 +244,20 @@ namespace Programmingpad
             ToolTip t = new ToolTip();
             t.Content = b52.LeftWing.ToString();
             LeftWingReg.ToolTip = t;
+        }
+
+        private void RightWingReg_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ToolTip t = new ToolTip();
+            t.Content = b52.LeftWing.ToString();
+            RightWingReg.ToolTip = t;
+        }
+
+        private void BayReg_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ToolTip t = new ToolTip();
+            t.Content = b52.LeftWing.ToString();
+            BayReg.ToolTip = t;
         }
     }
 }
