@@ -30,9 +30,6 @@ namespace Programmingpad
             FuelLabel.Content = b52.Fuel;
         }
 
-
-        
-
         private void AddFuel(object sender, RoutedEventArgs e)
         {
             // Allow only positive number in the field

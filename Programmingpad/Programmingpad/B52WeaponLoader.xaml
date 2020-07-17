@@ -27,8 +27,8 @@
         <Grid Grid.Row="1" Grid.Column="0" Background="DimGray"/>
         <Grid Grid.Row="2" Grid.ColumnSpan="4" Background="DimGray"/>
         <Grid Grid.Row="1" Grid.Column="3" Background="DimGray"/>
-        
-        <!-- Divide 1 row into 3x3 grid for weapon images -->
+
+        <!-- Divide the column into 10 row -->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -43,7 +43,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <!-- Fill weapon images into 3x3 grid -->
+            <!-- add weapon image to the first 7 row -->
             <Image Grid.Row="0" Width="350" Stretch="Fill" HorizontalAlignment="Center"  Source="Images/Gravity.png" ToolTip="Gravity" Name="GravityImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
             <Image Grid.Row="1" Width="350" Stretch="Fill" HorizontalAlignment="Center" Source="Images/JASSM.png" ToolTip="JASSM" Name="JASSMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
             <Image Grid.Row="2" Width="350" Stretch="Fill" HorizontalAlignment="Center" Source="Images/JDAM.png" ToolTip="JDAM" Name="JDAMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
@@ -52,26 +52,31 @@
             <Image Grid.Row="5" Width="350" Stretch="Fill" HorizontalAlignment="Center" Source="Images/ALCM-CALCM.png" ToolTip="CALCM" Name="CALCMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
             <Image Grid.Row="6" Width="350" Stretch="Fill" HorizontalAlignment="Center" Source="Images/ALCM-CALCM.png" ToolTip="ALCM" Name="ALCMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
 
+            <!-- Create 1x2 subgrid for Fuel -->
             <Grid Grid.Row="7" Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 
-                <!-- Add fuel items for feul row -->
+                <!-- Add fuel items to the grid -->
                 <TextBox Grid.Column="0" Name="FuelTextBox" Height="40" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                 <Button Grid.Column="1" Height="40" Width="150" Click="AddFuel">Add Fuel</Button>
             </Grid>
 
+            <!-- Create 1x2 subgrid for clear -->
             <Grid Grid.Row="8" Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+
+                <!-- Add clear button to the Grid -->
                 <Button Grid.Column="0" Height="40" Width="150" Click="ClearAllWeapons">Clear All Weapons</Button>
                 <Button Grid.Column="1" Height="40" Width="150" Click="ClearFuel">Clear Fuel</Button>
             </Grid>
 
+            <!-- Add text block to the last row -->
             <TextBlock Grid.Row="9" Name ="MessageTextBlock" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  TextAlignment="Center" FontSize ="18" TextWrapping="Wrap"/>
         </Grid>
 
