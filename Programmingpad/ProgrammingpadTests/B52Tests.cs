@@ -57,6 +57,7 @@ namespace Programmingpad.Tests
             bool actual = b52.IsReadyForTakeOff();
             // Assert
             Assert.AreEqual(expected, actual);
+            
             b52.Fuel = 100000;
             expected = true;
             actual = b52.IsReadyForTakeOff();

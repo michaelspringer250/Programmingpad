@@ -213,14 +213,14 @@ namespace Programmingpad
         private void RightWingReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
-            t.Content = b52.LeftWing.ToString();
+            t.Content = b52.RightWing.ToString();
             RightWingReg.ToolTip = t;
         }
 
         private void BayReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
-            t.Content = b52.LeftWing.ToString();
+            t.Content = b52.Bay.ToString();
             BayReg.ToolTip = t;
         }
     }
