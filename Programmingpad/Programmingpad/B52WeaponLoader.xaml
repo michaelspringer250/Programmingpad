@@ -11,12 +11,25 @@
     <Grid>
         <!-- Divide original grid into 2 column -->
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="DimGray"/>
+        <Grid Grid.Row="1" Grid.Column="0" Background="DimGray"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="4" Background="DimGray"/>
+        <Grid Grid.Row="1" Grid.Column="3" Background="DimGray"/>
+        
         <!-- Divide 1 row into 3x3 grid for weapon images -->
-        <Grid Grid.Row="0">
+        <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -39,7 +52,7 @@
             <Image Grid.Row="5" Width="350" Stretch="Fill" HorizontalAlignment="Center" Source="Images/ALCM-CALCM.png" ToolTip="CALCM" Name="CALCMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
             <Image Grid.Row="6" Width="350" Stretch="Fill" HorizontalAlignment="Center" Source="Images/ALCM-CALCM.png" ToolTip="ALCM" Name="ALCMImage" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
 
-            <Grid Grid.Row="7">
+            <Grid Grid.Row="7" Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -50,7 +63,7 @@
                 <Button Grid.Column="1" Height="40" Width="150" Click="AddFuel">Add Fuel</Button>
             </Grid>
 
-            <Grid Grid.Row="8">
+            <Grid Grid.Row="8" Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -63,7 +76,7 @@
         </Grid>
 
         <!-- divide the outer 2nd column into 2 rows -->
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="2" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="6*"/>
@@ -80,9 +93,9 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Add information label for content row  -->
-                <Label Grid.Column="0" Content="Weight" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
+                <Label Grid.Column="0" Content="Weight" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26" Background="LightGray"/>
                 <Label Grid.Column="1" Name="WeightLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
-                <Label Grid.Column="2" Content="Fuel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
+                <Label Grid.Column="2" Content="Fuel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26" Background="LightGray"/>
                 <Label Grid.Column="3" Name="FuelLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
                 <Label Grid.Column="4" Content="Status"  Name="StatusLabel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" Background="Red"/>
 
@@ -90,9 +103,9 @@
 
             <!-- Add b52 image and storage reg for bottom row -->
             <Image Grid.Row="1" Source="Images/B-52 Top.png" />
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="274,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="584,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="429,389,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="266,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="564,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="415,389,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
         </Grid>
     </Grid>
 </Page>

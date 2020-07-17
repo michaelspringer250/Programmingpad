@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="B52Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeaponStorageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
