@@ -119,6 +119,10 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
+            catch (LoadErrorException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             
 
             WeightLabel.Content = b52.CalcWeight();
@@ -135,6 +139,10 @@ namespace Programmingpad
                 b52.AddWeapon(Storage.Right, weapon);
             }
             catch (WeightErrorException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (LoadErrorException ex)
             {
                 MessageBox.Show(ex.Message);
             }

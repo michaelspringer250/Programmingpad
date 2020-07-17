@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Programmingpad"
       mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="1600"
-      Title="B-52 Weapon Loader" Height="900" Width="1600">
+      d:DesignHeight="900" d:DesignWidth="1440"
+      Title="B-52 Weapon Loader" Height="900" Width="1440">
 
     <Grid>
         <!-- Divide original grid into 2 column -->
@@ -124,9 +124,9 @@
 
             <!-- Add b52 image and storage reg for bottom row -->
             <Image Grid.Row="1" Source="Images/B-52 Top.png" />
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="326,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="639,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="481,384,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="274,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="584,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="429,389,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
         </Grid>
 
     </Grid>

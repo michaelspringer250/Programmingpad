@@ -111,7 +111,7 @@ namespace Programmingpad
         /// <returns>
         /// error code 0 successful, -1 error
         /// </returns>
-        public int AddWeapon(Storage _storage, Weapon _weapon)
+        public int AddWeapon(Storage _storage, Weapon _weapon) 
         {
             // Check if the total weight is over the maximum Take-off (ramp) weight
             if (this.CalcWeight() + System.Math.Abs((int)_weapon)> MAX_WEIGHT)
@@ -120,33 +120,40 @@ namespace Programmingpad
             }
 
             // Add weapon onto the platform
-            switch(_storage)
+            try
             {
-                case Storage.Bay:
-                    {
-                        // Check for additional limitation - MALD and WCMD cannot be loaded into the Bay
-                        if (_weapon == Weapon.MALD|| _weapon == Weapon.WCMD)
+                switch(_storage)
+                {
+                    case Storage.Bay:
                         {
-                            throw new LoadErrorException(string.Format("MALD and WCMD cannot be loaded into the bay"));
-                        }
-                        else
-                        {
-                            Bay.AddWeapon(_weapon);
-                        }
+                            // Check for additional limitation - MALD and WCMD cannot be loaded into the Bay
+                            if (_weapon == Weapon.MALD|| _weapon == Weapon.WCMD)
+                            {
+                                throw new LoadErrorException(string.Format("MALD and WCMD cannot be loaded into the bay"));
+                            }
+                            else
+                            {
+                                Bay.AddWeapon(_weapon);                               
+                            }
                         
-                        break;
-                    }
-                case Storage.Left:
-                    {
-                        LeftWing.AddWeapon(_weapon);
-                        break;
-                    }
-                case Storage.Right:
-                    {
-                        RightWing.AddWeapon(_weapon);
-                        break;
-                    }
-                default: return -1;
+                            break;
+                        }
+                    case Storage.Left:
+                        {
+                            LeftWing.AddWeapon(_weapon);
+                            break;
+                        }
+                    case Storage.Right:
+                        {
+                            RightWing.AddWeapon(_weapon);
+                            break;
+                        }
+                    default: return -1;
+                }
+            }
+            catch (LoadErrorException ex)
+            {
+                throw new LoadErrorException(ex.Message);
             }
             // Calculate the current weight after adding weapon
             this.Weight += System.Math.Abs((int)_weapon);
@@ -210,35 +217,3 @@ namespace Programmingpad
     }
 }
 
-/// <summary>
-/// Thrown when the total weight is over the take off weight limit
-/// </summary>
-public class WeightErrorException : Exception
-{
-    public WeightErrorException(string message)
-       : base(message)
-    {
-    }
-}
-
-/// <summary>
-/// Thrown when the fuel weight does not meet minimum or maximum requirements
-/// </summary>
-public class FuelErrorException : Exception
-{
-    public FuelErrorException(string message)
-       : base(message)
-    {
-    }
-}
-
-/// <summary>
-/// Thrown when MALD and WCMD be loaded into the bay
-/// </summary>
-public class LoadErrorException : Exception
-{
-    public LoadErrorException(string message)
-       : base(message)
-    {
-    }
-}

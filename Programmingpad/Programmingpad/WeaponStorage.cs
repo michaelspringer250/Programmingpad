@@ -68,38 +68,87 @@ namespace Programmingpad
             {
                 case Weapon.Gravity:
                     {
-                        this.Gravity = 1;
-                        break;
+                        if(this.Gravity != 1)
+                        {
+                            this.Gravity = 1;
+                            break;
+                        }
+                        else
+                        {
+                            throw new LoadErrorException("Gravity is already loaded into this area");
+                        }
                     }
                 case Weapon.JASSM:
                     {
-                        this.JASSM = 1;
-                        break;
+                        if(this.JASSM != 1)
+                        {
+                            this.JASSM = 1;
+                            break;
+                        }
+                        else
+                        {
+                            throw new LoadErrorException("JASSM is already loaded into this area");
+                        }
                     }
                 case Weapon.JDAM:
                     {
-                        this.JDAM = 1;
-                        break;
+                        if(this.JDAM != 1)
+                        {
+                            this.JDAM = 1;
+                            break;
+                        }
+                        else
+                        {
+                            throw new LoadErrorException("JDAM is already loaded into this area");
+                        }
                     }
                 case Weapon.MALD:
                     {
-                        this.MALD = 1;
-                        break;
+                        if(this.MALD != 1)
+                        {
+                            this.MALD = 1;
+                            break;
+                        }
+                        else
+                        {
+                            throw new LoadErrorException("MALD is already loaded into this area");
+                        }
                     }
                 case Weapon.WCMD:
                     {
-                        this.WCMD = 1;
-                        break;
+                        if(this.WCMD != 1)
+                        {
+                            this.WCMD = 1;
+                            break;
+                        }
+                        else
+                        {
+                            throw new LoadErrorException("WCMD is already loaded into this area");
+                        }
                     }
                 case Weapon.CALCM:
                     {
-                        this.CALCM = 1;
-                        break;
+                        if(this.CALCM != 1)
+                        {
+                            this.CALCM = 1;
+                            break;
+                        }
+                        else
+                        {
+                            throw new LoadErrorException("CALCM is already loaded into this area");
+                        }
                     }
                 case Weapon.ALCM:
                     {
-                        this.ALCM = 1;
-                        break;
+                        if(this.ALCM != 1)
+                        {
+                            this.ALCM = 1;
+                            break;
+                        }
+                        else
+                        {
+                            throw new LoadErrorException("ALCM is already loaded into this area");
+                        }
                     }
                 default: return -1;
             }
@@ -131,6 +180,39 @@ namespace Programmingpad
             this.WCMD = 0;
             this.CALCM = 0;
             this.ALCM = 0;
+        }
+    }
+
+    /// <summary>
+    /// Thrown when the total weight is over the take off weight limit
+    /// </summary>
+    public class WeightErrorException : Exception
+    {
+        public WeightErrorException(string message)
+           : base(message)
+        {
+        }
+    }
+
+    /// <summary>
+    /// Thrown when the fuel weight does not meet minimum or maximum requirements
+    /// </summary>
+    public class FuelErrorException : Exception
+    {
+        public FuelErrorException(string message)
+           : base(message)
+        {
+        }
+    }
+
+    /// <summary>
+    /// Thrown when MALD and WCMD be loaded into the bay
+    /// </summary>
+    public class LoadErrorException : Exception
+    {
+        public LoadErrorException(string message)
+           : base(message)
+        {
         }
     }
 }
