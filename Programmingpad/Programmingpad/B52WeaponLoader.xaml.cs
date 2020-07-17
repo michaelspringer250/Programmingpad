@@ -31,19 +31,14 @@ namespace Programmingpad
         }
 
 
-        private void AddWeapon(object sender, RoutedEventArgs e)
-        {
-            //String weapon = WeaponComboBox.Text;
-            MessageBox.Show("Weapon added");
-
-        }
+        
 
         private void AddFuel(object sender, RoutedEventArgs e)
         {
             // Allow only positive number in the field
             if (System.Text.RegularExpressions.Regex.IsMatch(FuelTextBox.Text, "[^0-9]"))
             {
-                MessageBox.Show("Please enter only numbers.");
+                MessageBox.Show("Enter only number \n");
                 FuelTextBox.Text = "100000";
             }
             else
@@ -73,7 +68,7 @@ namespace Programmingpad
         {
             b52.ClearWeapon();
             WeightLabel.Content = b52.CalcWeight();
-            MessageBox.Show("Weapons cleared");
+            MessageTextBlock.Text = "Weapons are cleared \n";
         }
 
         private void ClearFuel (object sender, RoutedEventArgs e)
@@ -81,7 +76,8 @@ namespace Programmingpad
             b52.ClearFuel();
             WeightLabel.Content = b52.CalcWeight();
             FuelLabel.Content = b52.Fuel;
-            IsReady();           
+            IsReady();
+            MessageTextBlock.Text = "Fuel is cleared \n";
 
         }
 
@@ -110,9 +106,10 @@ namespace Programmingpad
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
             String weaponString = (String)e.Data.GetData(typeof(String));
+            Weapon weapon = StringtoWeapon(weaponString);
+
             try
             {
-                Weapon weapon = StringtoWeapon(weaponString);
                 b52.AddWeapon(Storage.Left, weapon);
             }
             catch (WeightErrorException ex)
@@ -124,18 +121,20 @@ namespace Programmingpad
                 MessageBox.Show(ex.Message);
             }
             
-
             WeightLabel.Content = b52.CalcWeight();
+            MessageTextBlock.Text = weapon.ToString() + " is added into left wing \n";
         }
 
         private void RightWingReg_Drop(object sender, DragEventArgs e)
         {
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
+ 
             String weaponString = (String)e.Data.GetData(typeof(String));
+            Weapon weapon = StringtoWeapon(weaponString);
+
             try
-            {
-                Weapon weapon = StringtoWeapon(weaponString);
+            {               
                 b52.AddWeapon(Storage.Right, weapon);
             }
             catch (WeightErrorException ex)
@@ -148,7 +147,7 @@ namespace Programmingpad
             }
 
             WeightLabel.Content = b52.CalcWeight();
-            
+            MessageTextBlock.Text = weapon.ToString() + " is added into right wing \n";
         }
 
         private void BayReg_Drop(object sender, DragEventArgs e)
@@ -156,9 +155,10 @@ namespace Programmingpad
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
             String weaponString = (String)e.Data.GetData(typeof(String));
+            Weapon weapon = StringtoWeapon(weaponString);
+
             try
             {
-                Weapon weapon = StringtoWeapon(weaponString);
                 b52.AddWeapon(Storage.Bay, weapon);
             }
             catch (WeightErrorException ex)
@@ -171,6 +171,7 @@ namespace Programmingpad
             }
 
             WeightLabel.Content = b52.CalcWeight();
+            MessageTextBlock.Text = weapon.ToString() + " is added into bay \n";
         }
 
         public Weapon StringtoWeapon(String weaponName)

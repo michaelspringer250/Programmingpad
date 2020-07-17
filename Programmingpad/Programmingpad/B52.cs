@@ -130,6 +130,8 @@ namespace Programmingpad
                             if (_weapon == Weapon.MALD|| _weapon == Weapon.WCMD)
                             {
                                 throw new LoadErrorException(string.Format("MALD and WCMD cannot be loaded into the bay"));
+                         
+                            
                             }
                             else
                             {
