@@ -23,9 +23,9 @@ namespace Programmingpad
         private B52 b52;
 
         public B52WeaponLoader()
-        {
-            b52 = new B52();        
+        {                  
             InitializeComponent();
+            b52 = new B52();
             WeightLabel.Content = b52.CalcWeight();
             FuelLabel.Content = b52.Fuel;
         }

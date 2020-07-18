@@ -4,23 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Programmingpad"
-      mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="1440"
+      mc:Ignorable="d"
       Title="B-52 Weapon Loader" Height="900" Width="1440">
 
     <Grid>
         <!-- Divide original grid into 2 column -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
             <RowDefinition/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="DimGray"/>
@@ -31,7 +30,6 @@
         <!-- Divide the column into 10 row -->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -76,8 +74,7 @@
                 <Button Grid.Column="1" Height="40" Width="150" Click="ClearFuel">Clear Fuel</Button>
             </Grid>
 
-            <!-- Add text block to the last row -->
-            <TextBlock Grid.Row="9" Name ="MessageTextBlock" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  TextAlignment="Center" FontSize ="18" TextWrapping="Wrap"/>
+
         </Grid>
 
         <!-- divide the outer 2nd column into 2 rows -->
@@ -89,6 +86,11 @@
 
             <!-- divide the 1st sub row into 5 column for information label-->
             <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -103,14 +105,16 @@
                 <Label Grid.Column="2" Content="Fuel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26" Background="LightGray"/>
                 <Label Grid.Column="3" Name="FuelLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
                 <Label Grid.Column="4" Content="Status"  Name="StatusLabel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" Background="Red"/>
-
+                </Grid>
+                <!-- Add text block to the last row -->
+                <TextBlock Grid.Row="1" Margin="5" Name ="MessageTextBlock" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  TextAlignment="Center" FontSize ="18" TextWrapping="Wrap"/>
             </Grid>
 
             <!-- Add b52 image and storage reg for bottom row -->
             <Image Grid.Row="1" Source="Images/B-52 Top.png" />
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="266,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="564,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="415,389,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="268,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="573,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="422,393,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
         </Grid>
     </Grid>
 </Page>

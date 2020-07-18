@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Programmingpad"
-        mc:Ignorable="d"
-        Title="B-52 Weapon Loader" Height="900" Width="1440" Source="B52WeaponLoader.xaml">
+        WindowStartupLocation="CenterScreen"
+        Title="B-52 Weapon Loader"  Source="B52WeaponLoader.xaml" Icon="Images/AF.png">
+    
 </NavigationWindow>
