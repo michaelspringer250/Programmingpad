@@ -40,7 +40,7 @@ namespace Programmingpad
         /// <returns>
         /// error code 0 successful, -1 error
         /// </returns>
-        public int AddWeapon(Weapon weapon)
+        public void AddWeapon(Weapon weapon)
         {
             if(this.Storage.Contains(weapon))
             {
@@ -50,7 +50,6 @@ namespace Programmingpad
             {
                 this.Storage.AddLast(weapon);
             }
-            return 0;
         }
 
         public void RemoveWeapon(Weapon weapon)

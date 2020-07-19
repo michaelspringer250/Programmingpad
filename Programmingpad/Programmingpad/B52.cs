@@ -97,7 +97,7 @@ namespace Programmingpad
         /// <returns>
         /// error code 0 successful, -1 if error
         /// </returns>
-        public int AddWeapon(Storage storage, Weapon weapon) 
+        public void AddWeapon(Storage storage, Weapon weapon) 
         {
             switch (storage)
             {
@@ -148,10 +148,8 @@ namespace Programmingpad
                         }
                         break;
                     }
-                default: return -1;
+                default: break;
             }
-
-            return 0;
         }
 
         /// <summary>
@@ -162,7 +160,7 @@ namespace Programmingpad
         /// error code 0 successful, -1 error
         /// </returns>
         
-        public int AddFuel(int fuelWeight)
+        public void AddFuel(int fuelWeight)
         {
             // Check for negative value of fuel weight and minimum fuel weight
             if ((this.Fuel + fuelWeight) < MIN_FUEL || fuelWeight < 0)
@@ -183,8 +181,6 @@ namespace Programmingpad
             {
                 this.Fuel += fuelWeight;
             }
-            
-            return 0;
         }
 
         /// <summary>
