@@ -26,12 +26,6 @@ namespace Programmingpad.Tests
         [TestMethod()]
         public void AddWeaponTest()
         {
-            WeaponStorage actual = new WeaponStorage();
-            int expected = 1;
-            actual.AddWeapon(Weapon.ALCM);
-
-            Assert.AreEqual(actual.ALCM, expected);
-            Assert.ThrowsException<LoadErrorException>(() => actual.AddWeapon(Weapon.ALCM));
         }
 
         [TestMethod()]

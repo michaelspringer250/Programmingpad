@@ -10,49 +10,27 @@ using System.Text;
 
 namespace Programmingpad
 {
+    
     /// <summary>
     /// The class represents the storage for the different weapons
     /// </summary>
     public class WeaponStorage
     {
         // Define the variables
-        private int _Gravity; // Gravity
-        private int _JASSM;   // Joint Air-to-Surface Standoff
-        private int _JDAM;    // Joint Direct Attack Munition
-        private int _MALD;    // Miniature Air Launched Decoy
-        private int _WCMD;    // Wind-Corrected Munitions Dispenser
-        private int _CALCM;   // Conventional Air Launched Cruised Missile
-        private int _ALCM;    // Air Launched Cruise Missle
+        private LinkedList<Weapon> _storage;
 
         /// <summary>
         /// Construct a default WeaponStorage object
         /// </summary>
         public WeaponStorage()
         {
-            this.Gravity = 0;
-            this.JASSM = 0;
-            this.JDAM = 0;
-            this.MALD = 0;
-            this.WCMD = 0;
-            this.CALCM = 0;
-            this.ALCM = 0;   
+            this.Storage = new LinkedList<Weapon>();
         }
 
-        public override string ToString() 
-        {
-            return string.Format("Gravity {0} JASSM {1} JDAM {2} MALD {3} WCMD {4} CALCM {5} ALCM {6}", Gravity,JASSM,JDAM,MALD,WCMD,CALCM,ALCM);
-        }
         /// <summary>
         /// Getters and Setters
         /// </summary>
-
-        public int Gravity { get => _Gravity; set => _Gravity = value; }
-        public int JASSM { get => _JASSM; set => _JASSM = value; }
-        public int JDAM { get => _JDAM; set => _JDAM = value; }
-        public int MALD { get => _MALD; set => _MALD = value; }
-        public int WCMD { get => _WCMD; set => _WCMD = value; }
-        public int CALCM { get => _CALCM; set => _CALCM = value; }
-        public int ALCM { get => _ALCM; set => _ALCM = value; }
+        public LinkedList<Weapon> Storage { get => _storage; set => _storage = value; }
 
         /// <summary>
         /// Add weapon into the storage
@@ -62,98 +40,34 @@ namespace Programmingpad
         /// <returns>
         /// error code 0 successful, -1 error
         /// </returns>
-        public int AddWeapon(Weapon _weapon)
+        public int AddWeapon(Weapon weapon)
         {
-            switch(_weapon)
+            if(this.Storage.Contains(weapon))
             {
-                case Weapon.Gravity:
-                    {
-                        if(this.Gravity != 1)
-                        {
-                            this.Gravity = 1;
-                            break;
-                        }
-                        else
-                        {
-                            throw new LoadErrorException("Gravity is already loaded into this area");
-                        }
-                    }
-                case Weapon.JASSM:
-                    {
-                        if(this.JASSM != 1)
-                        {
-                            this.JASSM = 1;
-                            break;
-                        }
-                        else
-                        {
-                            throw new LoadErrorException("JASSM is already loaded into this area");
-                        }
-                    }
-                case Weapon.JDAM:
-                    {
-                        if(this.JDAM != 1)
-                        {
-                            this.JDAM = 1;
-                            break;
-                        }
-                        else
-                        {
-                            throw new LoadErrorException("JDAM is already loaded into this area");
-                        }
-                    }
-                case Weapon.MALD:
-                    {
-                        if(this.MALD != 1)
-                        {
-                            this.MALD = 1;
-                            break;
-                        }
-                        else
-                        {
-                            throw new LoadErrorException("MALD is already loaded into this area");
-                        }
-                    }
-                case Weapon.WCMD:
-                    {
-                        if(this.WCMD != 1)
-                        {
-                            this.WCMD = 1;
-                            break;
-                        }
-                        else
-                        {
-                            throw new LoadErrorException("WCMD is already loaded into this area");
-                        }
-                    }
-                case Weapon.CALCM:
-                    {
-                        if(this.CALCM != 1)
-                        {
-                            this.CALCM = 1;
-                            break;
-                        }
-                        else
-                        {
-                            throw new LoadErrorException("CALCM is already loaded into this area");
-                        }
-                    }
-                case Weapon.ALCM:
-                    {
-                        if(this.ALCM != 1)
-                        {
-                            this.ALCM = 1;
-                            break;
-                        }
-                        else
-                        {
-                            throw new LoadErrorException("ALCM is already loaded into this area");
-                        }
-                    }
-                default: return -1;
+                this.Storage.Find(weapon).Value.Quantity++;            
             }
-
+            else
+            {
+                this.Storage.AddLast(weapon);
+            }
             return 0;
+        }
+
+        public void RemoveWeapon(Weapon weapon)
+        {
+            Storage.Remove(weapon);
+        }
+
+        public Boolean Contain(Weapon weapon)
+        {
+            if(this.Storage.Find(weapon) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -164,8 +78,14 @@ namespace Programmingpad
         /// </returns>
         public int CalcWeight()
         {
-            return this.Gravity * (int)Weapon.Gravity + this.JASSM * (int)Weapon.JASSM + this.JDAM * (int) Weapon.JDAM + this.MALD * (int)Weapon.MALD
-                + this.WCMD * (int) Weapon.WCMD + this.CALCM * (int) Weapon.CALCM + this.ALCM * System.Math.Abs((int) Weapon.ALCM);
+            int weight = 0;
+
+            foreach(Weapon weapon in Storage)
+            {
+                weight += weapon.Weight * weapon.Quantity;
+            }
+
+            return weight;
         }
 
         /// <summary>
@@ -173,47 +93,19 @@ namespace Programmingpad
         /// </summary>
         public void ClearWeapon()
         {
-            this.Gravity = 0;
-            this.JASSM = 0;
-            this.JDAM = 0;
-            this.MALD = 0;
-            this.WCMD = 0;
-            this.CALCM = 0;
-            this.ALCM = 0;
+            this.Storage.Clear();
+        }
+
+        public override string ToString()
+        {
+            String toString = "";
+            foreach (Weapon weapon in Storage)
+            {
+                toString += weapon.ToString() + " ";
+            }
+            return toString;
         }
     }
 
-    /// <summary>
-    /// Thrown when the total weight is over the take off weight limit
-    /// </summary>
-    public class WeightErrorException : Exception
-    {
-        public WeightErrorException(string message)
-           : base(message)
-        {
-        }
-    }
-
-    /// <summary>
-    /// Thrown when the fuel weight does not meet minimum or maximum requirements
-    /// </summary>
-    public class FuelErrorException : Exception
-    {
-        public FuelErrorException(string message)
-           : base(message)
-        {
-        }
-    }
-
-    /// <summary>
-    /// Thrown when MALD and WCMD be loaded into the bay
-    /// </summary>
-    public class LoadErrorException : Exception
-    {
-        public LoadErrorException(string message)
-           : base(message)
-        {
-        }
-    }
 }
 

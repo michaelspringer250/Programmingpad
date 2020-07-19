@@ -58,7 +58,6 @@
     <Compile Include="B52WeaponLoader.xaml.cs">
       <DependentUpon>B52WeaponLoader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WeaponStorage.cs" />
     <Page Include="B52WeaponLoader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -72,6 +71,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="B52.cs" />
+    <Compile Include="Weapon.cs" />
+    <Compile Include="WeaponStorage.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

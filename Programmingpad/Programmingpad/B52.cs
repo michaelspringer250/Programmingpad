@@ -1,5 +1,5 @@
-﻿using System;
-using System.CodeDom;
+﻿﻿using System;
+using System.Collections.Generic;
 
 /*
  * Group 2 - B52 Tinker Project - ProgrammingPad
@@ -19,20 +19,6 @@ namespace Programmingpad
         Right
     }
 
-    /// <summary>
-    /// Create an Weapon enum that represents the weapon weight
-    /// </summary>
-    public enum Weapon : int
-    {
-        Gravity = 7988, // Gravity
-        JASSM = 24946,  // Joint Air-to-Surface Standoff
-        JDAM = 9722,    // Joint Direct Attack Munition
-        MALD = 7626,    // Miniature Air Launched Decoy
-        WCMD = 16324,   // Wind-Corrected Munitions Dispenser
-        CALCM = 30194,  // Conventional Air Launched Cruised Missile
-        ALCM = -30194,   // Air Launched Cruise Missle, Can not have the same index within enum and use absolute value for calculating
-        NONE = 0
-    }
 
     /// <summary>
     /// This class represents the B52 platform includes Bay, LeftWing, RightWing
@@ -45,20 +31,20 @@ namespace Programmingpad
         const int MIN_FUEL = 100000;
         const int MAX_FUEL = 300000;
         const int INIT_WEIGHT = 185000;
-
+        
         // Define the variables
         private WeaponStorage _bay;
         private WeaponStorage _leftWing;
         private WeaponStorage _rightWing;
         private int _weight;
         private int _fuel;
-
+        
         // Getters and Setters
+        public int Weight { get => _weight; set => _weight = value; }
+        public int Fuel { get => _fuel; set => _fuel = value; }
         public WeaponStorage Bay { get => _bay; set => _bay = value; }
         public WeaponStorage LeftWing { get => _leftWing; set => _leftWing = value; }
         public WeaponStorage RightWing { get => _rightWing; set => _rightWing = value; }
-        public int Weight { get => _weight; set => _weight = value; }
-        public int Fuel { get => _fuel; set => _fuel = value; }
 
         /// <summary>
         /// Construct a default B52 object with weight = 185000 lbs and fuel = 0
@@ -109,56 +95,61 @@ namespace Programmingpad
         /// <param name="_weapon">
         /// </param> type of weapon loaded onto B52
         /// <returns>
-        /// error code 0 successful, -1 error
+        /// error code 0 successful, -1 if error
         /// </returns>
-        public int AddWeapon(Storage _storage, Weapon _weapon) 
+        public int AddWeapon(Storage storage, Weapon weapon) 
         {
-            // Check if the total weight is over the maximum Take-off (ramp) weight
-            if (this.CalcWeight() + System.Math.Abs((int)_weapon)> MAX_WEIGHT)
+            switch (storage)
             {
-                throw new WeightErrorException(string.Format("Over take off weight limit {0}", MAX_WEIGHT));
-            }
-
-            // Add weapon onto the platform
-            try
-            {
-                switch(_storage)
-                {
-                    case Storage.Bay:
+                case Storage.Bay:
+                    {
+                        if (weapon.Type == WeaponType.MALD || weapon.Type == WeaponType.WCMD)
                         {
-                            // Check for additional limitation - MALD and WCMD cannot be loaded into the Bay
-                            if (_weapon == Weapon.MALD|| _weapon == Weapon.WCMD)
+                            throw new LoadErrorException("MALD and WCMD cannot be loaded into the bay");
+                        }
+                        else
+                        {
+                            if(Bay.Contain(weapon))
                             {
-                                throw new LoadErrorException(string.Format("MALD and WCMD cannot be loaded into the bay"));
-                         
-                            
+                                throw new LoadErrorException("{0) is already loaded into the bay");
                             }
                             else
                             {
-                                Bay.AddWeapon(_weapon);                               
+                                Bay.AddWeapon(weapon);
+                                this.Weight += weapon.Weight;
                             }
-                        
-                            break;
+                            
                         }
-                    case Storage.Left:
+                        break;
+                    }
+                case Storage.Left:
+                    {
+                        if (LeftWing.Contain(weapon))
                         {
-                            LeftWing.AddWeapon(_weapon);
-                            break;
+                            throw new LoadErrorException("{0) is already loaded into the left wing");
                         }
-                    case Storage.Right:
+                        else
                         {
-                            RightWing.AddWeapon(_weapon);
-                            break;
+                            LeftWing.AddWeapon(weapon);
+                            this.Weight += weapon.Weight;
                         }
-                    default: return -1;
-                }
+                        break;
+                    }
+                case Storage.Right:
+                    {
+                        if (RightWing.Contain(weapon))
+                        {
+                            throw new LoadErrorException("{0) is already loaded into the left wing");
+                        }
+                        else
+                        {
+                            RightWing.AddWeapon(weapon);
+                            this.Weight += weapon.Weight;
+                        }
+                        break;
+                    }
+                default: return -1;
             }
-            catch (LoadErrorException ex)
-            {
-                throw new LoadErrorException(ex.Message);
-            }
-            // Calculate the current weight after adding weapon
-            this.Weight += System.Math.Abs((int)_weapon);
 
             return 0;
         }
@@ -171,26 +162,26 @@ namespace Programmingpad
         /// error code 0 successful, -1 error
         /// </returns>
         
-        public int AddFuel(int _fuelWeight)
+        public int AddFuel(int fuelWeight)
         {
             // Check for negative value of fuel weight and minimum fuel weight
-            if ((this.Fuel + _fuelWeight) < MIN_FUEL || _fuelWeight < 0)
+            if ((this.Fuel + fuelWeight) < MIN_FUEL || fuelWeight < 0)
             {
                 throw new FuelErrorException(string.Format("Fuel does not meet minimum requirement {0}, current fuel {1}", MIN_FUEL, this.Fuel));
             }
             // Check for maximum fuel weight
-            else if ((this.Fuel + _fuelWeight) > MAX_FUEL)
+            else if ((this.Fuel + fuelWeight) > MAX_FUEL)
             {
                 throw new FuelErrorException(string.Format("Fuel does not meet maximum requirement {0}", MAX_FUEL));
             }
             // Check whether exceeding maximum weight for taking off or not
-            else if ((this.Fuel + _fuelWeight + this.Weight) > MAX_WEIGHT)
+            else if ((this.Fuel + fuelWeight + this.Weight) > MAX_WEIGHT)
             {
                 throw new WeightErrorException(string.Format("Over take off weight limit", MAX_WEIGHT));
             }
             else
             {
-                this.Fuel += _fuelWeight;
+                this.Fuel += fuelWeight;
             }
             
             return 0;
@@ -201,10 +192,10 @@ namespace Programmingpad
         /// </summary>
         public void ClearWeapon()
         {
-            this._bay.ClearWeapon();
-            this._leftWing.ClearWeapon();
-            this._rightWing.ClearWeapon();
-            Weight = INIT_WEIGHT;
+            Bay.ClearWeapon();
+            LeftWing.ClearWeapon();
+            RightWing.ClearWeapon();
+            this.Weight = INIT_WEIGHT;
         }
 
         /// <summary>
@@ -216,6 +207,39 @@ namespace Programmingpad
         }
         
         
+    }
+
+        /// <summary>
+    /// Thrown when the total weight is over the take off weight limit
+    /// </summary>
+    public class WeightErrorException : Exception
+    {
+        public WeightErrorException(string message)
+           : base(message)
+        {
+        }
+    }
+
+    /// <summary>
+    /// Thrown when the fuel weight does not meet minimum or maximum requirements
+    /// </summary>
+    public class FuelErrorException : Exception
+    {
+        public FuelErrorException(string message)
+           : base(message)
+        {
+        }
+    }
+
+    /// <summary>
+    /// Thrown when MALD and WCMD be loaded into the bay
+    /// </summary>
+    public class LoadErrorException : Exception
+    {
+        public LoadErrorException(string message)
+           : base(message)
+        {
+        }
     }
 }
 

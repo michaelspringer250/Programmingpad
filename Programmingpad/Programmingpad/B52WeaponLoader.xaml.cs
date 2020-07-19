@@ -103,7 +103,8 @@ namespace Programmingpad
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
             String weaponString = (String)e.Data.GetData(typeof(String));
-            Weapon weapon = StringtoWeapon(weaponString);
+            WeaponType weaponType = StringtoWeapon(weaponString);
+            Weapon weapon = new Weapon(weaponType);
 
             try
             {
@@ -128,7 +129,8 @@ namespace Programmingpad
             /// Pull the original click weapon from event
  
             String weaponString = (String)e.Data.GetData(typeof(String));
-            Weapon weapon = StringtoWeapon(weaponString);
+            WeaponType weaponType = StringtoWeapon(weaponString);
+            Weapon weapon = new Weapon(weaponType);
 
             try
             {               
@@ -152,7 +154,8 @@ namespace Programmingpad
             /// Mouse drop into the Bay image area
             /// Pull the original click weapon from event
             String weaponString = (String)e.Data.GetData(typeof(String));
-            Weapon weapon = StringtoWeapon(weaponString);
+            WeaponType weaponType = StringtoWeapon(weaponString);
+            Weapon weapon = new Weapon(weaponType);
 
             try
             {
@@ -171,41 +174,41 @@ namespace Programmingpad
             MessageTextBlock.Text = weapon.ToString() + " is added into bay \n";
         }
 
-        public Weapon StringtoWeapon(String weaponName)
+        public WeaponType StringtoWeapon(String weaponName)
         {
             switch (weaponName)
             {
                 case "GravityImage":
                     {
-                        return Weapon.Gravity;
+                        return WeaponType.Gravity;
                     }
                 case "JASSMImage":
                     {
-                        return Weapon.JASSM;
+                        return WeaponType.JASSM;
                     }
                 case "JDAMImage":
                     {
-                        return Weapon.JDAM;
+                        return WeaponType.JDAM;
                     }
                 case "MALDImage":
                     {
-                        return Weapon.MALD;
+                        return WeaponType.MALD;
                     }
                 case "WCMDImage":
                     {
-                        return Weapon.WCMD;
+                        return WeaponType.WCMD;
                     }
                 case "CALCMImage":
                     {
-                        return Weapon.CALCM;
+                        return WeaponType.CALCM;
                     }
                 case "ALCMImage":
                     {
-                        return Weapon.ALCM;
+                        return WeaponType.ALCM;
                     }
                 default:
                     {
-                        return Weapon.NONE;
+                        return WeaponType.NONE;
                     }
             }
         }
