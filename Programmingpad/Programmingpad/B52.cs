@@ -1,11 +1,12 @@
 ﻿﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
  * B52.cs
- */ 
- 
+ */
+
 
 namespace Programmingpad
 { 
@@ -115,8 +116,19 @@ namespace Programmingpad
                             }
                             else
                             {
-                                Bay.AddWeapon(weapon);
                                 this.Weight += weapon.Weight;
+                                int currentWeight = CalcWeight();
+
+                                if (currentWeight > MAX_WEIGHT)
+                                {
+                                    this.Weight -= weapon.Weight;
+                                    throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type)); 
+                                }
+                                else 
+                                {
+                                    Bay.AddWeapon(weapon);
+                                } 
+                                
                             }
                             
                         }
@@ -131,8 +143,18 @@ namespace Programmingpad
                         }
                         else
                         {
-                            LeftWing.AddWeapon(weapon);
                             this.Weight += weapon.Weight;
+                            int currentWeight = CalcWeight();
+
+                            if (currentWeight > MAX_WEIGHT)
+                            {
+                                this.Weight -= weapon.Weight;
+                                throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type));
+                            }
+                            else
+                            {
+                                LeftWing.AddWeapon(weapon);
+                            }
                         }
                         break;
                     }
@@ -145,8 +167,18 @@ namespace Programmingpad
                         }
                         else
                         {
-                            RightWing.AddWeapon(weapon);
                             this.Weight += weapon.Weight;
+                            int currentWeight = CalcWeight();
+
+                            if (currentWeight > MAX_WEIGHT)
+                            {
+                                this.Weight -= weapon.Weight;
+                                throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type));
+                            }
+                            else
+                            {
+                                RightWing.AddWeapon(weapon);
+                            }
                         }
                         break;
                     }
