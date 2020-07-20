@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 /*
- * Group 2 - B52 Tinker Project - ProgrammingPad
+ * Group 2 - B52 Tinker Project - Programmingpad
  * B52.cs
  */ 
  
@@ -59,7 +59,7 @@ namespace Programmingpad
         }
 
         /// <summary>
-        /// Calculate the weight of B52
+        /// Calculate the weight of B52 which consists of B52 weight and fuel weight
         /// </summary>
         /// <returns>
         /// Returns the total weight of B52
@@ -90,25 +90,25 @@ namespace Programmingpad
         /// <summary>
         /// Add weapon onto the B52 platform: Bay, LeftWing, RightWing
         /// </summary>
-        /// <param name="_storage">
+        /// <param name="storage">
         /// </param> Storage places: Bay, LeftWing, RightWing
-        /// <param name="_weapon">
+        /// <param name="weapon">
         /// </param> type of weapon loaded onto B52
-        /// <returns>
-        /// error code 0 successful, -1 if error
-        /// </returns>
+        
         public void AddWeapon(Storage storage, Weapon weapon) 
         {
             switch (storage)
             {
                 case Storage.Bay:
                     {
+                        // Check if MALD and WCMD is loaded into the Bay
                         if (weapon.Type == WeaponType.MALD || weapon.Type == WeaponType.WCMD)
                         {
                             throw new LoadErrorException("MALD and WCMD cannot be loaded into the bay");
                         }
                         else
                         {
+                            // Check if the same weapon is added into Bay area
                             if(Bay.Contain(weapon))
                             {
                                 throw new LoadErrorException(String.Format("{0} is already loaded into the bay", weapon.Type));
@@ -124,6 +124,7 @@ namespace Programmingpad
                     }
                 case Storage.Left:
                     {
+                        // Check if the same weapon is added into Leftwing area
                         if (LeftWing.Contain(weapon))
                         {
                             throw new LoadErrorException(String.Format("{0} is already loaded into the left wing", weapon.Type));
@@ -137,9 +138,10 @@ namespace Programmingpad
                     }
                 case Storage.Right:
                     {
+                        // // Check if the same weapon is added into Right wing area
                         if (RightWing.Contain(weapon))
                         {
-                            throw new LoadErrorException(String.Format("{0} is already loaded into the left wing", weapon.Type));
+                            throw new LoadErrorException(String.Format("{0} is already loaded into the right wing", weapon.Type));
                         }
                         else
                         {
@@ -155,10 +157,8 @@ namespace Programmingpad
         /// <summary>
         /// Add fuel into the B52 Platform
         /// </summary>
-        /// <param name="_fuelWeight"></param>
-        /// <returns>
-        /// error code 0 successful, -1 error
-        /// </returns>
+        /// <param name="fuelWeight"></param>
+        
         
         public void AddFuel(int fuelWeight)
         {
@@ -205,13 +205,13 @@ namespace Programmingpad
         
     }
 
-        /// <summary>
+    /// <summary>
     /// Thrown when the total weight is over the take off weight limit
     /// </summary>
     public class WeightErrorException : Exception
     {
-        public WeightErrorException(string message)
-           : base(message)
+            public WeightErrorException(string message)
+        : base(message)
         {
         }
     }

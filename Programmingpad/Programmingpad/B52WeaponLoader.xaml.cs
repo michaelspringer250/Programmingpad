@@ -232,5 +232,15 @@ namespace Programmingpad
             t.Content = b52.Bay.ToString();
             BayReg.ToolTip = t;
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new B52WeaponLoader());
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Close();
+        }
     }
 }
