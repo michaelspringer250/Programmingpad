@@ -116,12 +116,8 @@ namespace Programmingpad
                             }
                             else
                             {
-                                this.Weight += weapon.Weight;
-                                int currentWeight = CalcWeight();
-
-                                if (currentWeight > MAX_WEIGHT)
+                                if (this.CalcWeight() + weapon.Weight > MAX_WEIGHT)
                                 {
-                                    this.Weight -= weapon.Weight;
                                     throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type)); 
                                 }
                                 else 
@@ -143,12 +139,8 @@ namespace Programmingpad
                         }
                         else
                         {
-                            this.Weight += weapon.Weight;
-                            int currentWeight = CalcWeight();
-
-                            if (currentWeight > MAX_WEIGHT)
+                            if (this.CalcWeight() + weapon.Weight > MAX_WEIGHT)
                             {
-                                this.Weight -= weapon.Weight;
                                 throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type));
                             }
                             else
@@ -167,12 +159,8 @@ namespace Programmingpad
                         }
                         else
                         {
-                            this.Weight += weapon.Weight;
-                            int currentWeight = CalcWeight();
-
-                            if (currentWeight > MAX_WEIGHT)
+                            if (this.CalcWeight() + weapon.Weight > MAX_WEIGHT)
                             {
-                                this.Weight -= weapon.Weight;
                                 throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type));
                             }
                             else
