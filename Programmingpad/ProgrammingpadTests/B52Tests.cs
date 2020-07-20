@@ -71,7 +71,7 @@ namespace Programmingpad.Tests
         */
 
         [TestMethod()]
-        public void AddGravityTest()
+        public void AddGravityWeaponTest()
         {
             // Arrange
             B52 b52 = new B52();
