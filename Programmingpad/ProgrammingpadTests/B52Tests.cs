@@ -64,8 +64,14 @@ namespace Programmingpad.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /*
+            Running unit tests on whether the weapons can be added to the 3 specified storage
+            areas of the B-52. The MALD and WCMD will fail the test when checking the bayStorage since
+            there is an exception thrown. 
+        */
+
         [TestMethod()]
-        public void AddWeaponTest()
+        public void AddGravityTest()
         {
             // Arrange
             B52 b52 = new B52();
@@ -78,12 +84,6 @@ namespace Programmingpad.Tests
 
         }
 
-        /*
-            Running unit tests on whether the other weapons can be added to the 3 specified storage
-            areas of the B-52. The MALD and WCMD will fail the test when checking the bayStorage since
-            there is an exception thrown. 
-        */
-
         [TestMethod()]
         public void AddJASSMWeaponTest()
         {
@@ -91,6 +91,8 @@ namespace Programmingpad.Tests
             B52 b52 = new B52();
             int expected = 0;
             // Act
+
+            // Assert 
 
         }
 
@@ -100,7 +102,10 @@ namespace Programmingpad.Tests
             // Arrange
             B52 b52 = new B52();
             int expected = 0;
+
             // Act
+
+            // Assert 
 
         }
 
@@ -110,7 +115,10 @@ namespace Programmingpad.Tests
             // Arrange
             B52 b52 = new B52();
             int expected = 0;
+
             // Act
+
+            // Assert
 
         }
 
@@ -120,6 +128,10 @@ namespace Programmingpad.Tests
             // Arrange
             B52 b52 = new B52();
             int expected = 0;
+
+            // Act
+            
+            // Assert
 
 
         }
@@ -131,6 +143,10 @@ namespace Programmingpad.Tests
             B52 b52 = new B52();
             int expected = 0;
 
+            // Act
+
+            // Assert
+
         }
 
         [TestMethod()]
@@ -140,6 +156,10 @@ namespace Programmingpad.Tests
             B52 b52 = new B52();
             int expected = 0;
 
+            // Act
+
+            // Assert
+
         }
 
         [TestMethod()]
@@ -147,12 +167,13 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
+            int expected = 100000; 
 
-            int expected = 0;
             // Act
-            int actual = b52.AddFuel(100000);
+            b52.AddFuel(100000);
+
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, b52.Fuel);
         }
 
         [TestMethod()]
@@ -173,6 +194,17 @@ namespace Programmingpad.Tests
             //Act
             // Assert
             Assert.ThrowsException<FuelErrorException>(() => b52.AddFuel(300001));
+        }
+
+        [TestMethod()]
+        public void TakeOffLimitTest()
+        {
+            // Arrange
+            B52 b52 = new B52();
+            b52.Weight = 200000;
+            // Act
+            // Assert
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddFuel(300000));
         }
 
         [TestMethod()]
