@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Programmingpad"
       mc:Ignorable="d"
-      Title="B-52 Weapon Loader" Height="900" Width="1440">
+      Title="B-52 Weapon Loader" Height="720" Width="1280">
 
     <Grid>
         <!-- Divide original grid into 2 column -->
@@ -28,7 +28,7 @@
             </MenuItem>
         </Menu>
 
-        
+
         <!-- Divide the column into 10 row -->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -58,7 +58,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                
+
                 <!-- Add fuel items to the grid -->
                 <TextBox Grid.Column="0" Name="FuelTextBox" Height="40" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                 <Button Grid.Column="1" Height="40" Width="150" Click="AddFuel">Add Fuel</Button>
@@ -93,20 +93,20 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                <!-- Add information label for content row  -->
-                <Label Grid.Column="0" Content="Weight" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26" Background="LightGray"/>
-                <Label Grid.Column="1" Name="WeightLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
-                <Label Grid.Column="2" Content="Fuel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26" Background="LightGray"/>
-                <Label Grid.Column="3" Name="FuelLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
-                <Label Grid.Column="4" Content="Status"  Name="StatusLabel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" Background="Red"/>
+                    <!-- Add information label for content row  -->
+                    <Label Grid.Column="0" Content="Weight" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26" Background="LightGray"/>
+                    <Label Grid.Column="1" Name="WeightLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
+                    <Label Grid.Column="2" Content="Fuel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26" Background="LightGray"/>
+                    <Label Grid.Column="3" Name="FuelLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
+                    <Label Grid.Column="4" Content="Status"  Name="StatusLabel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" Background="Red"/>
                 </Grid>
                 <!-- Add text block to the last row -->
                 <TextBlock Grid.Row="1" Margin="5" Name ="MessageTextBlock" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  TextAlignment="Center" FontSize ="18" TextWrapping="Wrap"/>
@@ -114,9 +114,9 @@
 
             <!-- Add b52 image and storage reg for bottom row -->
             <Image Grid.Row="1" Source="Images/B-52 Top.png" />
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="263,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="556,315,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="410,390,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="241,222,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="470,222,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="374,284,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="67" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
         </Grid>
     </Grid>
 </Page>
