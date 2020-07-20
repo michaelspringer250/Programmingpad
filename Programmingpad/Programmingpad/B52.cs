@@ -161,6 +161,10 @@ namespace Programmingpad
                         }
                         else
                         {
+                            if (this.CalcWeight() + weapon.Weight > MAX_WEIGHT)
+                            {
+                                throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type));
+                            }
                             else
                             {
                                 RightWing.AddWeapon(weapon);
