@@ -17,7 +17,7 @@ namespace Programmingpad
         NONE
     }
 
-    public class Weapon : IComparable<Weapon>
+    public class Weapon : IEquatable<Weapon>
     {
         const int GRAVITY_WEIGHT = 7988;
         const int JASSM_WEIGHT = 24946;
@@ -105,14 +105,18 @@ namespace Programmingpad
         public int Weight { get => _weight; set => _weight = value; }
         public int Quantity { get => _quantity; set => _quantity = value; }
 
-        public int CompareTo(Weapon other)
-        {
-            if (this.Type == other.Type)
-            {
-                return 0;
-            }
+        
 
-            return other.Type.CompareTo(this.Type);
+        public bool Equals(Weapon other)
+        {
+            if(this.Type == other.Type)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override string ToString()

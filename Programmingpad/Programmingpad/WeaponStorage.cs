@@ -59,14 +59,7 @@ namespace Programmingpad
 
         public Boolean Contain(Weapon weapon)
         {
-            if(this.Storage.Find(weapon) != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return this.Storage.Contains(weapon);
         }
 
         /// <summary>

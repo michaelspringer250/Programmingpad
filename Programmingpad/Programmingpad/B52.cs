@@ -111,7 +111,7 @@ namespace Programmingpad
                         {
                             if(Bay.Contain(weapon))
                             {
-                                throw new LoadErrorException("{0) is already loaded into the bay");
+                                throw new LoadErrorException(String.Format("{0} is already loaded into the bay", weapon.Type));
                             }
                             else
                             {
@@ -126,7 +126,7 @@ namespace Programmingpad
                     {
                         if (LeftWing.Contain(weapon))
                         {
-                            throw new LoadErrorException("{0) is already loaded into the left wing");
+                            throw new LoadErrorException(String.Format("{0} is already loaded into the left wing", weapon.Type));
                         }
                         else
                         {
@@ -139,7 +139,7 @@ namespace Programmingpad
                     {
                         if (RightWing.Contain(weapon))
                         {
-                            throw new LoadErrorException("{0) is already loaded into the left wing");
+                            throw new LoadErrorException(String.Format("{0} is already loaded into the left wing", weapon.Type));
                         }
                         else
                         {
