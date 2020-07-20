@@ -69,9 +69,8 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
-            // Act
 
+            // Act
 
             // Assert
 
@@ -89,7 +88,7 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+
             // Act
 
         }
@@ -99,7 +98,7 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+
             // Act
 
         }
@@ -109,9 +108,11 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+
             // Act
 
+            // Assert
+            // Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, )); 
         }
 
         [TestMethod()]
@@ -119,7 +120,10 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+
+            // Act
+
+            // Assert
 
 
         }
@@ -129,7 +133,10 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+
+            // Act
+
+            // Assert
 
         }
 
@@ -138,7 +145,10 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+
+            // Act
+
+            // Assert
 
         }
 
@@ -147,12 +157,13 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
+            int expected = 100000;
 
-            int expected = 0;
             // Act
-            int actual = b52.AddFuel(100000);
+            b52.AddFuel(100000); 
+
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, b52.Fuel);
         }
 
         [TestMethod()]
@@ -161,6 +172,7 @@ namespace Programmingpad.Tests
             // Arrange
             B52 b52 = new B52();
             // Act
+
             // Assert
             Assert.ThrowsException<FuelErrorException>(() => b52.AddFuel(0));
         }
@@ -170,9 +182,22 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            //Act
+            // Act
+
             // Assert
             Assert.ThrowsException<FuelErrorException>(() => b52.AddFuel(300001));
+        }
+
+        [TestMethod()]
+        public void TakeOffLimitTest()
+        {
+            // Arrange
+            B52 b52 = new B52();
+            b52.Weight = 200000; 
+            // Act
+
+            // Assert
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddFuel(300000));
         }
 
         [TestMethod()]
@@ -180,10 +205,11 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-
             int expected = 185000;
+
             // Act
             int actual = b52.Weight;
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
@@ -193,10 +219,11 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-
             int expected = 0;
+
             // Act
             int actual = b52.Fuel;
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
