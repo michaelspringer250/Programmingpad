@@ -150,9 +150,7 @@ namespace Programmingpad.Tests
 
             int expected = 0;
             // Act
-            int actual = b52.AddFuel(100000);
-            // Assert
-            Assert.AreEqual(expected, actual);
+
         }
 
         [TestMethod()]

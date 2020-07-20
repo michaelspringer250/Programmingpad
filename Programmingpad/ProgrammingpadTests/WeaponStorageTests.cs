@@ -11,33 +11,67 @@ namespace Programmingpad.Tests
     [TestClass()]
     public class WeaponStorageTests
     {
+       
         [TestMethod()]
         public void WeaponStorageTest()
         {
-            Assert.Fail();
+
+            WeaponStorage weaponstorage = new WeaponStorage();
+            Assert.IsNotNull(weaponstorage.Storage);
         }
 
         [TestMethod()]
         public void ToStringTest()
         {
-            Assert.Fail();
+
+            WeaponStorage weaponstorage = new WeaponStorage();
+            Weapon gravity = new Weapon(WeaponType.Gravity);
+            weaponstorage.AddWeapon(gravity);
+            String expected = "1 Gravity";
+            String actual = weaponstorage.ToString();
+            Assert.AreEqual(actual, expected);
+
         }
 
         [TestMethod()]
         public void AddWeaponTest()
         {
+            WeaponStorage weaponstorage = new WeaponStorage();
+            Weapon gravity = new Weapon(WeaponType.Gravity);
+            weaponstorage.AddWeapon(gravity);
+            bool expected = true;
+            bool actual = weaponstorage.Contain(gravity);
+            Assert.AreEqual(actual, expected);
+
         }
 
         [TestMethod()]
         public void CalcWeightTest()
         {
-            Assert.Fail();
+            WeaponStorage weaponstorage = new WeaponStorage();
+            Weapon weapon = new Weapon(WeaponType.Gravity);
+            weaponstorage.AddWeapon(weapon);
+            weapon = new Weapon(WeaponType.JASSM);
+            weapon.Quantity = 2;
+            weaponstorage.AddWeapon(weapon);
+            int expected = Weapon.GRAVITY_WEIGHT + Weapon.JASSM_WEIGHT*2;
+            int actual = weaponstorage.CalcWeight();
+            Assert.AreEqual(actual, expected);
         }
 
         [TestMethod()]
         public void ClearWeaponTest()
         {
-            Assert.Fail();
+            WeaponStorage weaponstorage = new WeaponStorage();
+            Weapon weapon = new Weapon(WeaponType.Gravity);
+            weaponstorage.AddWeapon(weapon);
+            weapon = new Weapon(WeaponType.JASSM);
+            weapon.Quantity = 2;
+            weaponstorage.AddWeapon(weapon);
+            weaponstorage.ClearWeapon();
+            int actual = weaponstorage.Storage.Count();
+            int expected = 0;
+            Assert.AreEqual(actual, expected);
         }
     }
 }

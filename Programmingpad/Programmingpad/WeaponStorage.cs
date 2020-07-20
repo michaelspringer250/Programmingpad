@@ -16,7 +16,7 @@ namespace Programmingpad
     /// </summary>
     public class WeaponStorage
     {
-        // Define the variables
+        // Define the variable
         private LinkedList<Weapon> _storage;
 
         /// <summary>
@@ -35,13 +35,13 @@ namespace Programmingpad
         /// <summary>
         /// Add weapon into the storage
         /// </summary>
-        /// <param name="_weapon">
-        /// </param> different types of weapon
-        /// <returns>
-        /// error code 0 successful, -1 error
-        /// </returns>
+        /// <param name="weapon">
+        /// type of weapon
+        /// </param> 
+
         public void AddWeapon(Weapon weapon)
         {
+            // Check whether the weapon in the Linkedlist or not, if not add weapon
             if(this.Storage.Contains(weapon))
             {
                 this.Storage.Find(weapon).Value.Quantity++;            
@@ -52,11 +52,25 @@ namespace Programmingpad
             }
         }
 
+        /// <summary>
+        /// Remove a weapon from the Weapon Storage
+        /// <param name="weapon">
+        ///  type of weapon
+        /// </param>
         public void RemoveWeapon(Weapon weapon)
         {
             Storage.Remove(weapon);
         }
 
+        /// <summary>
+        /// Check whether the weapon in the storage or not
+        /// </summary>
+        /// <param name="weapon">
+        /// type of weapon
+        /// </param> 
+        /// <returns>
+        /// Return true if the weapon in the storage, false if not
+        /// </returns>
         public Boolean Contain(Weapon weapon)
         {
             return this.Storage.Contains(weapon);
@@ -88,12 +102,25 @@ namespace Programmingpad
             this.Storage.Clear();
         }
 
+        /// <summary>
+        /// Return the quantity and type of all weapon in the storage
+        /// </summary>
+        /// <returns>
+        /// a string description of the weapon storage
+        /// </returns>
         public override string ToString()
         {
             String toString = "";
             foreach (Weapon weapon in Storage)
             {
-                toString += weapon.ToString() + " ";
+                if(Storage.Count > 1)
+                {
+                    toString += weapon.ToString() + " ";
+                }
+                else
+                {
+                    toString = weapon.ToString();
+                }
             }
             return toString;
         }
