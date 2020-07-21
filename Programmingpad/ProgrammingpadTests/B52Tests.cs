@@ -75,13 +75,31 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
-            // Act
+            Weapon GravityWeapon = new Weapon(WeaponType.Gravity);
+            int expected = 208964;
 
+            // Act
+            b52.AddWeapon(Storage.Left, GravityWeapon);
+            b52.AddWeapon(Storage.Right, GravityWeapon); 
+            b52.AddWeapon(Storage.Bay, GravityWeapon);
+            int actual = b52.CalcWeight();
 
             // Assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Left, GravityWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Right, GravityWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, GravityWeapon));
+        }
 
-
+        [TestMethod()]
+        public void OverWeightGravityTest()
+        {
+            B52 b52 = new B52();
+            Weapon GravityWeapon = new Weapon(WeaponType.Gravity);
+            b52.Weight = 485000;
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, GravityWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, GravityWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, GravityWeapon));
         }
 
         [TestMethod()]
@@ -89,11 +107,31 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+            Weapon JASSMWeapon = new Weapon(WeaponType.JASSM);
+            int expected = 259838;
+
             // Act
+            b52.AddWeapon(Storage.Left, JASSMWeapon);
+            b52.AddWeapon(Storage.Right, JASSMWeapon);
+            b52.AddWeapon(Storage.Bay, JASSMWeapon);
+            int actual = b52.CalcWeight();
 
-            // Assert 
+            // Assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Left, JASSMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Right, JASSMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, JASSMWeapon));
+        }
 
+        [TestMethod()]
+        public void OverWeightJASSMTest()
+        {
+            B52 b52 = new B52();
+            Weapon JASSMWeapon = new Weapon(WeaponType.JASSM);
+            b52.Weight = 485000;
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, JASSMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, JASSMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, JASSMWeapon));
         }
 
         [TestMethod()]
@@ -101,12 +139,31 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+            Weapon JDAMWeapon = new Weapon(WeaponType.JDAM);
+            int expected = 214166;
 
             // Act
+            b52.AddWeapon(Storage.Left, JDAMWeapon);
+            b52.AddWeapon(Storage.Right, JDAMWeapon);
+            b52.AddWeapon(Storage.Bay, JDAMWeapon);
+            int actual = b52.CalcWeight();
 
-            // Assert 
+            // Assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Left, JDAMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Right, JDAMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, JDAMWeapon));
+        }
 
+        [TestMethod()]
+        public void OverWeightJDAMTest()
+        {
+            B52 b52 = new B52();
+            Weapon JDAMWeapon = new Weapon(WeaponType.JDAM);
+            b52.Weight = 485000;
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, JDAMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, JDAMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, JDAMWeapon));
         }
 
         [TestMethod()]
@@ -114,12 +171,30 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+            Weapon MALDWeapon = new Weapon(WeaponType.MALD);
+            int expected = 200252;
 
             // Act
+            b52.AddWeapon(Storage.Left, MALDWeapon);
+            b52.AddWeapon(Storage.Right, MALDWeapon);
+            int actual = b52.CalcWeight();
 
             // Assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Left, MALDWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Right, MALDWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, MALDWeapon));
+        }
 
+        [TestMethod()]
+        public void OverWeightMALDTest()
+        {
+            B52 b52 = new B52();
+            Weapon MALDWeapon = new Weapon(WeaponType.MALD);
+            b52.Weight = 485000;
+
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, MALDWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, MALDWeapon));
         }
 
         [TestMethod()]
@@ -127,13 +202,30 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+            Weapon WCMDWeapon = new Weapon(WeaponType.WCMD);
+            int expected = 217648;
 
             // Act
-            
+            b52.AddWeapon(Storage.Left, WCMDWeapon);
+            b52.AddWeapon(Storage.Right, WCMDWeapon);
+            int actual = b52.CalcWeight();
+
             // Assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Left, WCMDWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Right, WCMDWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, WCMDWeapon));
+        }
 
+        [TestMethod()]
+        public void OverWeightWCMDTest()
+        {
+            B52 b52 = new B52();
+            Weapon WCMDWeapon = new Weapon(WeaponType.WCMD);
+            b52.Weight = 485000;
 
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, WCMDWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, WCMDWeapon));
         }
 
         [TestMethod()]
@@ -141,12 +233,32 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+            Weapon CALCMWeapon = new Weapon(WeaponType.CALCM);
+            int expected = 275582;
 
             // Act
+            b52.AddWeapon(Storage.Left, CALCMWeapon);
+            b52.AddWeapon(Storage.Right, CALCMWeapon);
+            b52.AddWeapon(Storage.Bay, CALCMWeapon);
+            int actual = b52.CalcWeight();
 
             // Assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Left, CALCMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Right, CALCMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, CALCMWeapon));
+        }
 
+        [TestMethod()]
+        public void OverWeightCALCMTest()
+        {
+            B52 b52 = new B52();
+            Weapon CALCMWeapon = new Weapon(WeaponType.CALCM);
+            b52.Weight = 485000;
+
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, CALCMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, CALCMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, CALCMWeapon));
         }
 
         [TestMethod()]
@@ -154,12 +266,32 @@ namespace Programmingpad.Tests
         {
             // Arrange
             B52 b52 = new B52();
-            int expected = 0;
+            Weapon ALCMWeapon = new Weapon(WeaponType.ALCM);
+            int expected = 275582;
 
             // Act
+            b52.AddWeapon(Storage.Left, ALCMWeapon);
+            b52.AddWeapon(Storage.Right, ALCMWeapon);
+            b52.AddWeapon(Storage.Bay, ALCMWeapon);
+            int actual = b52.CalcWeight();
 
             // Assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Left, ALCMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Right, ALCMWeapon));
+            Assert.ThrowsException<LoadErrorException>(() => b52.AddWeapon(Storage.Bay, ALCMWeapon));
+        }
 
+        [TestMethod()]
+        public void OverWeightALCMTest()
+        {
+            B52 b52 = new B52();
+            Weapon ALCMWeapon = new Weapon(WeaponType.ALCM);
+            b52.Weight = 485000;
+
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, ALCMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, ALCMWeapon));
+            Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, ALCMWeapon));
         }
 
         [TestMethod()]
