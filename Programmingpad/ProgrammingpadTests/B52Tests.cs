@@ -97,6 +97,7 @@ namespace Programmingpad.Tests
             B52 b52 = new B52();
             Weapon GravityWeapon = new Weapon(WeaponType.Gravity);
             b52.Weight = 485000;
+
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, GravityWeapon));
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, GravityWeapon));
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, GravityWeapon));
@@ -129,6 +130,7 @@ namespace Programmingpad.Tests
             B52 b52 = new B52();
             Weapon JASSMWeapon = new Weapon(WeaponType.JASSM);
             b52.Weight = 485000;
+
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, JASSMWeapon));
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, JASSMWeapon));
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, JASSMWeapon));
@@ -161,6 +163,7 @@ namespace Programmingpad.Tests
             B52 b52 = new B52();
             Weapon JDAMWeapon = new Weapon(WeaponType.JDAM);
             b52.Weight = 485000;
+
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Left, JDAMWeapon));
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Right, JDAMWeapon));
             Assert.ThrowsException<WeightErrorException>(() => b52.AddWeapon(Storage.Bay, JDAMWeapon));
