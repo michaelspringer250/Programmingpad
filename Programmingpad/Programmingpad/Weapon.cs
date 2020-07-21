@@ -2,7 +2,7 @@
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
- * B52.cs
+ * Weapon.cs
  */
 
 namespace Programmingpad

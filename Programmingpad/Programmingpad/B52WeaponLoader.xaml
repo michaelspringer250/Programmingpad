@@ -8,7 +8,7 @@
       Title="B-52 Weapon Loader" Height="720" Width="1280">
 
     <Grid>
-        <!-- Divide original grid into 2 column -->
+        <!-- Divide original grid into 4 column -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="*"/>

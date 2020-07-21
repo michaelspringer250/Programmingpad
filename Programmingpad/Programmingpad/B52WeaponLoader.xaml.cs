@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Group 2 - B52 Tinker Project - Programmingpad
+ * B52WeaponLoader.xaml.cs
+ */
 namespace Programmingpad
 {
     /// <summary>
@@ -20,8 +24,12 @@ namespace Programmingpad
     /// </summary>
     public partial class B52WeaponLoader : Page
     {
+        // Declare the variable
         private B52 b52;
 
+        /// <summary>
+        /// Construct a default B52WeaponLoader object
+        /// </summary>
         public B52WeaponLoader()
         {                  
             InitializeComponent();
@@ -30,6 +38,15 @@ namespace Programmingpad
             FuelLabel.Content = b52.Fuel;
         }
 
+        /// <summary>
+        /// Add fuel into the loader
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void AddFuel(object sender, RoutedEventArgs e)
         {
             // Allow only positive number in the field
@@ -45,22 +62,29 @@ namespace Programmingpad
                 {
                     b52.AddFuel(fuelWeight);
                 }
-                catch(FuelErrorException ex)
+                catch (FuelErrorException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                catch(WeightErrorException ex)
+                catch (WeightErrorException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
                 WeightLabel.Content = b52.CalcWeight();
                 FuelLabel.Content = b52.Fuel;
                 IsReady();
-            }
-
-            
+            }    
         }
 
+        /// <summary>
+        /// Clear all the weapon from the weapon loader
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void ClearAllWeapons(object sender, RoutedEventArgs e)
         {
             b52.ClearWeapon();
@@ -68,6 +92,15 @@ namespace Programmingpad
             MessageTextBlock.Text = "Weapons are cleared \n";
         }
 
+        /// <summary>
+        /// Clear the fuel from the weapon loader
+        /// </summary>
+        /// <param name="sender">
+        /// </param>
+        /// 
+        /// <param name="e">
+        /// 
+        /// </param>
         private void ClearFuel (object sender, RoutedEventArgs e)
         {
             b52.ClearFuel();
@@ -78,6 +111,9 @@ namespace Programmingpad
 
         }
 
+        /// <summary>
+        /// Check if the weaponloader is ready
+        /// </summary>
         private void IsReady()
         {
             if(b52.IsReadyForTakeOff())
@@ -89,6 +125,15 @@ namespace Programmingpad
                 StatusLabel.Background = Brushes.Red;
             }
         }
+        /// <summary>
+        /// Drag and drop weapon into the weapon loader
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Image i = (Image)sender;
@@ -98,14 +143,24 @@ namespace Programmingpad
 
         }
 
+        /// <summary>
+        /// Drop the weapon into the Left wing
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void LeftWingReg_Drop(object sender, DragEventArgs e)
         {
-            /// Mouse drop into the Bay image area
+            /// Mouse drop into the Left wing image area
             /// Pull the original click weapon from event
             String weaponString = (String)e.Data.GetData(typeof(String));
             WeaponType weaponType = StringtoWeapon(weaponString);
             Weapon weapon = new Weapon(weaponType);
 
+            // check the exception
             try
             {
                 b52.AddWeapon(Storage.Left, weapon);
@@ -118,14 +173,23 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
-            
+            // update the current weight
             WeightLabel.Content = b52.CalcWeight();
             MessageTextBlock.Text = weapon.ToString() + " is added into left wing \n";
         }
 
+        /// <summary>
+        /// Drop the weapon into the Right wing
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void RightWingReg_Drop(object sender, DragEventArgs e)
         {
-            /// Mouse drop into the Bay image area
+            /// Mouse drop into the Right wing image area
             /// Pull the original click weapon from event
  
             String weaponString = (String)e.Data.GetData(typeof(String));
@@ -144,11 +208,16 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
-
+            // update the current weight
             WeightLabel.Content = b52.CalcWeight();
             MessageTextBlock.Text = weapon.ToString() + " is added into right wing \n";
         }
 
+        /// <summary>
+        /// Drop the weapon into the Bay
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BayReg_Drop(object sender, DragEventArgs e)
         {
             /// Mouse drop into the Bay image area
@@ -169,11 +238,20 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
-
+            // update the current weight
             WeightLabel.Content = b52.CalcWeight();
             MessageTextBlock.Text = weapon.ToString() + " is added into bay \n";
         }
 
+        /// <summary>
+        /// Convert the name of the image to the Weapon type
+        /// </summary>
+        /// <param name="weaponName">
+        /// name of the weapon image
+        /// </param>
+        /// <returns>
+        /// weapon type
+        /// </returns>
         public WeaponType StringtoWeapon(String weaponName)
         {
             switch (weaponName)
@@ -212,6 +290,15 @@ namespace Programmingpad
                     }
             }
         }
+        /// <summary>
+        /// Show the information of weapons in the Left wing
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void LeftWingReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
@@ -219,6 +306,15 @@ namespace Programmingpad
             LeftWingReg.ToolTip = t;
         }
 
+        /// <summary>
+        /// Show the information of weapons in the Right wing
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void RightWingReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
@@ -226,6 +322,15 @@ namespace Programmingpad
             RightWingReg.ToolTip = t;
         }
 
+        /// <summary>
+        /// Show the information of weapons in the Bay
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void BayReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
@@ -233,11 +338,29 @@ namespace Programmingpad
             BayReg.ToolTip = t;
         }
 
+        /// <summary>
+        /// Create the B52 menu
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void B52MenuItem_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new B52WeaponLoader());
         }
 
+        /// <summary>
+        /// Create the exit menu
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e">
+        /// 
+        /// </param>
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Close();

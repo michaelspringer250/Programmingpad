@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Programmingpad.Tests
 {
+    /// <summary>
+    /// Test the default and non default constructor
+    /// </summary>
     [TestClass()]
     public class WeaponTests
     {
@@ -43,22 +46,34 @@ namespace Programmingpad.Tests
             Assert.AreEqual(actual.Weight, expect.Weight);
         }
 
+        /// <summary>
+        /// Test the Equals method if two object are equal
+        /// </summary>
         [TestMethod()]
         public void EqualsTest()
         {
+            // Arrange
             Weapon weapon1 = new Weapon(WeaponType.ALCM);
             Weapon weapon2 = new Weapon(WeaponType.ALCM);
+            // Act
             bool expected = true;
             bool actual = weapon1.Equals(weapon2);
+            // Assert
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test the ToString method represents the description of the weapon
+        /// </summary>
         [TestMethod()]
         public void ToStringTest()
         {
+            // Arrange
             Weapon weapon = new Weapon(WeaponType.Gravity);
+            // Act
             string expected = "1 Gravity";
             string actual = weapon.ToString();
+            // Assert
             Assert.AreEqual(expected, actual);
 
         }
