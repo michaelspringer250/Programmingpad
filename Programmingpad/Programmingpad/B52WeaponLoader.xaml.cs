@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Shapes;
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
+ * @Author Sydney Ninh
  * B52WeaponLoader.xaml.cs
  */
 namespace Programmingpad
@@ -90,6 +92,9 @@ namespace Programmingpad
             b52.ClearWeapon();
             WeightLabel.Content = b52.CalcWeight();
             MessageTextBlock.Text = "Weapons are cleared \n";
+            LeftWingReg.Fill = Brushes.LightGray;
+            RightWingReg.Fill = Brushes.LightGray;
+            BayReg.Fill = Brushes.LightGray;
         }
 
         /// <summary>
@@ -164,6 +169,13 @@ namespace Programmingpad
             try
             {
                 b52.AddWeapon(Storage.Left, weapon);
+                // update the current weight
+                WeightLabel.Content = b52.CalcWeight();
+                MessageTextBlock.Text = weapon.ToString() + " is added into left wing \n";
+                ImageBrush imageBrush = new ImageBrush();
+                Uri uri = new Uri(weaponNameToURI(weaponString));
+                imageBrush.ImageSource = new BitmapImage(uri);
+                LeftWingReg.Fill = imageBrush;
             }
             catch (WeightErrorException ex)
             {
@@ -173,9 +185,7 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
-            // update the current weight
-            WeightLabel.Content = b52.CalcWeight();
-            MessageTextBlock.Text = weapon.ToString() + " is added into left wing \n";
+
         }
 
         /// <summary>
@@ -199,6 +209,13 @@ namespace Programmingpad
             try
             {               
                 b52.AddWeapon(Storage.Right, weapon);
+                // update the current weight
+                WeightLabel.Content = b52.CalcWeight();
+                MessageTextBlock.Text = weapon.ToString() + " is added into right wing \n";
+                ImageBrush imageBrush = new ImageBrush();
+                Uri uri = new Uri(weaponNameToURI(weaponString));
+                imageBrush.ImageSource = new BitmapImage(uri);
+                RightWingReg.Fill = imageBrush;
             }
             catch (WeightErrorException ex)
             {
@@ -208,9 +225,7 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
-            // update the current weight
-            WeightLabel.Content = b52.CalcWeight();
-            MessageTextBlock.Text = weapon.ToString() + " is added into right wing \n";
+
         }
 
         /// <summary>
@@ -229,6 +244,13 @@ namespace Programmingpad
             try
             {
                 b52.AddWeapon(Storage.Bay, weapon);
+                // update the current weight
+                WeightLabel.Content = b52.CalcWeight();
+                MessageTextBlock.Text = weapon.ToString() + " is added into bay \n";
+                ImageBrush imageBrush = new ImageBrush();
+                Uri uri = new Uri(weaponNameToURI(weaponString));
+                imageBrush.ImageSource = new BitmapImage(uri);
+                BayReg.Fill = imageBrush;
             }
             catch (WeightErrorException ex)
             {
@@ -238,9 +260,19 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
-            // update the current weight
-            WeightLabel.Content = b52.CalcWeight();
-            MessageTextBlock.Text = weapon.ToString() + " is added into bay \n";
+        }
+
+        private String weaponNameToURI(String name)
+        {
+            if(name.Contains("ALCM"))
+            {
+                return "pack://application:,,,/Images/ALCM-CALCM.png";
+            }
+            else
+            {
+                name = name.Replace("Image", ".png");
+            }
+            return "pack://application:,,,/Images/" + name;
         }
 
         /// <summary>

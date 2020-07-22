@@ -5,6 +5,7 @@ using System.Text;
 
 /*
  * Group 2 - B52 Tinker Project - ProgrammingPad
+ * @Author Sydney Ninh
  * WeaponStorage.cs
  */
 

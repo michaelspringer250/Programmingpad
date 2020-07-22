@@ -2,6 +2,7 @@
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
+ * @Author Sydney Ninh
  * Weapon.cs
  */
 

@@ -115,9 +115,9 @@
 
             <!-- Add b52 image and storage reg for bottom row -->
             <Image Grid.Row="1" Source="Images/B-52 Top.png" />
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="241,222,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="470,222,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="374,284,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="67" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
+            <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="100" Margin="241,222,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="LeftWingReg" Drop="LeftWingReg_Drop" MouseEnter="LeftWingReg_MouseEnter"/>
+            <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="100" Margin="470,222,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" AllowDrop="True" Name="RightWingReg" Drop="RightWingReg_Drop" MouseEnter="RightWingReg_MouseEnter"/>
+            <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="100" Margin="360,286,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="90" AllowDrop="True" Name="BayReg" Drop="BayReg_Drop" MouseEnter="BayReg_MouseEnter"/>
         </Grid>
     </Grid>
 </Page>

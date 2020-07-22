@@ -4,6 +4,7 @@ using System.ComponentModel;
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
+ * @Author Sydney Ninh
  * B52.cs
  */
 

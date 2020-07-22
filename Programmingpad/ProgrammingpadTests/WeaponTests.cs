@@ -6,6 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Group 2 - B52 Tinker Project - ProgrammingPad
+ * @Author Sydney Ninh
+ * WeaponTest.cs
+ */
+
 namespace Programmingpad.Tests
 {
     /// <summary>
