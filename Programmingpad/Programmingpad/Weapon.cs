@@ -25,6 +25,7 @@ namespace Programmingpad
     /// <summary>
     /// The Weapon class represents the weapon: weapon type, quantity, weight
     /// </summary>
+    [Serializable]
     public class Weapon : IEquatable<Weapon>
     {
         // Define constant variables

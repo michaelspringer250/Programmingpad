@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -262,6 +263,11 @@ namespace Programmingpad
             }
         }
 
+        /// <summary>
+        /// Convert weapon image name to the URI location
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         private String weaponNameToURI(String name)
         {
             if(name.Contains("ALCM"))
@@ -397,5 +403,34 @@ namespace Programmingpad
         {
             Application.Current.MainWindow.Close();
         }
+
+        /// <summary>
+        /// Save the data into a file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+                b52.WriteToFile(saveFileDialog.FileName);
+        }
+
+        /// <summary>
+        /// Open and read data into application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                b52 = b52.ReadFromFile(openFileDialog.FileName);
+
+            IsReady();
+            WeightLabel.Content = b52.CalcWeight();
+            FuelLabel.Content = b52.Fuel;
+        }
+
     }
 }

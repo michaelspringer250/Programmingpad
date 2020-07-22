@@ -1,6 +1,9 @@
 ﻿﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
@@ -26,6 +29,7 @@ namespace Programmingpad
     /// This class represents the B52 platform includes Bay, LeftWing, RightWing
     /// Different kind of weapons will be loaded onto the B-52 platform
     /// </summary>
+    [Serializable]
     public class B52
     {
         // Define the constant variables
@@ -225,8 +229,36 @@ namespace Programmingpad
         {
             this.Fuel = 0;
         }
-        
-        
+         
+        /// <summary>
+        /// write the object to the file
+        /// </summary>
+        /// <param name="path"></param>
+        public void WriteToFile(String path)  
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(@path, FileMode.Create, FileAccess.Write);
+
+            formatter.Serialize(stream, this);
+            stream.Close();
+        }
+
+        /// <summary>
+        /// Read the object from the file
+        /// </summary>
+        /// <param name="path">
+        /// file path
+        /// </param>
+        /// <returns>
+        /// the B52 object
+        /// </returns>
+        public B52 ReadFromFile(String path)  
+        {
+            Stream stream = new FileStream(@path, FileMode.Open, FileAccess.Read);
+            IFormatter formatter = new BinaryFormatter();
+            return (B52)formatter.Deserialize(stream);
+        }  
+
     }
 
     /// <summary>

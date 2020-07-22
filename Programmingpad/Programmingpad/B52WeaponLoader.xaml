@@ -25,6 +25,8 @@
         <Menu Grid.Row="0" Grid.Column="1"  Height="20" Name="menu" Margin="5, 5, 5, 5" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <MenuItem Header="_Menu">
                 <MenuItem Header="_B52" IsCheckable="False"  Click="B52MenuItem_Click" />
+                <MenuItem Header="_Save" IsCheckable="False"  Click="SaveMenuItem_Click" />
+                <MenuItem Header="_Open" IsCheckable="False"  Click="OpenMenuItem_Click" />
                 <MenuItem Header="_Exit" IsCheckable="False" Click="ExitMenuItem_Click" />
             </MenuItem>
         </Menu>

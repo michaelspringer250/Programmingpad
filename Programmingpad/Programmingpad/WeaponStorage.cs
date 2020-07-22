@@ -11,10 +11,11 @@ using System.Text;
 
 namespace Programmingpad
 {
-    
+
     /// <summary>
     /// The class represents the storage for the different weapons
     /// </summary>
+    [Serializable]
     public class WeaponStorage
     {
         // Define the variable
