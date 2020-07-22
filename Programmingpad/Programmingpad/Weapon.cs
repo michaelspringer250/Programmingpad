@@ -137,9 +137,13 @@ namespace Programmingpad
         public bool Equals(Weapon other)
         {
             if(this.Type == other.Type)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
         /// <summary>

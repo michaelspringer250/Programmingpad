@@ -55,7 +55,7 @@ namespace Programmingpad
             // Allow only positive number in the field
             if (System.Text.RegularExpressions.Regex.IsMatch(FuelTextBox.Text, "[^0-9]"))
             {
-                MessageBox.Show("Enter a positive number \n");
+                MessageBox.Show("Enter only number \n");
                 FuelTextBox.Text = "100000";
             }
             else
@@ -92,7 +92,7 @@ namespace Programmingpad
         {
             b52.ClearWeapon();
             WeightLabel.Content = b52.CalcWeight();
-            MessageTextBlock.Text = "Weapons cleared \n";
+            MessageTextBlock.Text = "Weapons are cleared \n";
             LeftWingReg.Fill = Brushes.LightGray;
             RightWingReg.Fill = Brushes.LightGray;
             BayReg.Fill = Brushes.LightGray;
@@ -113,7 +113,7 @@ namespace Programmingpad
             WeightLabel.Content = b52.CalcWeight();
             FuelLabel.Content = b52.Fuel;
             IsReady();
-            MessageTextBlock.Text = "Fuel cleared \n";
+            MessageTextBlock.Text = "Fuel is cleared \n";
 
         }
 
@@ -123,11 +123,14 @@ namespace Programmingpad
         private void IsReady()
         {
             if(b52.IsReadyForTakeOff())
+            {
                 StatusLabel.Background = Brushes.Green;
+            }
             else
+            {
                 StatusLabel.Background = Brushes.Red;
+            }
         }
-
         /// <summary>
         /// Drag and drop weapon into the weapon loader
         /// </summary>
@@ -143,6 +146,7 @@ namespace Programmingpad
             /// passing the weapon name to the Drag and Drop event
             DataObject dataObject = new DataObject(i.Name);
             System.Windows.DragDrop.DoDragDrop(i, dataObject, DragDropEffects.Move);
+
         }
 
         /// <summary>
@@ -182,6 +186,7 @@ namespace Programmingpad
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         /// <summary>
@@ -266,9 +271,13 @@ namespace Programmingpad
         private String weaponNameToURI(String name)
         {
             if(name.Contains("ALCM"))
+            {
                 return "pack://application:,,,/Images/ALCM-CALCM.png";
+            }
             else
+            {
                 name = name.Replace("Image", ".png");
+            }
             return "pack://application:,,,/Images/" + name;
         }
 
@@ -319,7 +328,6 @@ namespace Programmingpad
                     }
             }
         }
-
         /// <summary>
         /// Show the information of weapons in the Left wing
         /// </summary>
