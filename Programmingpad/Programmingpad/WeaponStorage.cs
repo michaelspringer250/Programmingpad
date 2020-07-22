@@ -45,13 +45,9 @@ namespace Programmingpad
         {
             // Check whether the weapon in the Linkedlist or not, if not add weapon
             if(this.Storage.Contains(weapon))
-            {
                 this.Storage.Find(weapon).Value.Quantity++;            
-            }
             else
-            {
                 this.Storage.AddLast(weapon);
-            }
         }
 
         /// <summary>
@@ -116,17 +112,12 @@ namespace Programmingpad
             foreach (Weapon weapon in Storage)
             {
                 if(Storage.Count > 1)
-                {
                     toString += weapon.ToString() + " ";
-                }
                 else
-                {
                     toString = weapon.ToString();
-                }
             }
             return toString;
         }
     }
-
 }
 

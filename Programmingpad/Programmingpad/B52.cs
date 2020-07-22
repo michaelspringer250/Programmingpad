@@ -109,30 +109,22 @@ namespace Programmingpad
                     {
                         // Check if MALD and WCMD is loaded into the Bay
                         if (weapon.Type == WeaponType.MALD || weapon.Type == WeaponType.WCMD)
-                        {
                             throw new LoadErrorException("MALD and WCMD cannot be loaded into the bay");
-                        }
                         else
                         {
                             // Check if the same weapon is added into Bay area
                             if(Bay.Contain(weapon))
-                            {
                                 throw new LoadErrorException(String.Format("{0} is already loaded into the bay", weapon.Type));
-                            }
                             else
                             {
                                 if (this.CalcWeight() + weapon.Weight > MAX_WEIGHT)
-                                {
                                     throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type)); 
-                                }
                                 else 
                                 {
                                     Bay.AddWeapon(weapon);
                                     this.Weight += weapon.Weight;
                                 } 
-                                
                             }
-                            
                         }
                         break;
                     }
@@ -140,15 +132,11 @@ namespace Programmingpad
                     {
                         // Check if the same weapon is added into Leftwing area
                         if (LeftWing.Contain(weapon))
-                        {
                             throw new LoadErrorException(String.Format("{0} is already loaded into the left wing", weapon.Type));
-                        }
                         else
                         {
                             if (this.CalcWeight() + weapon.Weight > MAX_WEIGHT)
-                            {
                                 throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type));
-                            }
                             else
                             {
                                 LeftWing.AddWeapon(weapon);
@@ -161,15 +149,11 @@ namespace Programmingpad
                     {
                         // // Check if the same weapon is added into Right wing area
                         if (RightWing.Contain(weapon))
-                        {
                             throw new LoadErrorException(String.Format("{0} is already loaded into the right wing", weapon.Type));
-                        }
                         else
                         {
                             if (this.CalcWeight() + weapon.Weight > MAX_WEIGHT)
-                            {
                                 throw new WeightErrorException(String.Format("Adding {0} will make the B-52 unable to take off", weapon.Type));
-                            }
                             else
                             {
                                 RightWing.AddWeapon(weapon);
@@ -192,23 +176,15 @@ namespace Programmingpad
         {
             // Check for negative value of fuel weight and minimum fuel weight
             if ((this.Fuel + fuelWeight) < MIN_FUEL || fuelWeight < 0)
-            {
                 throw new FuelErrorException(string.Format("Fuel does not meet minimum requirement {0}, current fuel {1}", MIN_FUEL, this.Fuel));
-            }
             // Check for maximum fuel weight
             else if ((this.Fuel + fuelWeight) > MAX_FUEL)
-            {
                 throw new FuelErrorException(string.Format("Fuel does not meet maximum requirement {0}", MAX_FUEL));
-            }
             // Check whether exceeding maximum weight for taking off or not
             else if ((this.Fuel + fuelWeight + this.Weight) > MAX_WEIGHT)
-            {
                 throw new WeightErrorException(string.Format("Over take off weight limit", MAX_WEIGHT));
-            }
             else
-            {
                 this.Fuel += fuelWeight;
-            }
         }
 
         /// <summary>
