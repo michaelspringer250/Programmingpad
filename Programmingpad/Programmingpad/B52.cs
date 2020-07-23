@@ -300,8 +300,8 @@ namespace Programmingpad
     /// </summary>
     public class WeightErrorException : Exception
     {
-            public WeightErrorException(string message)
-        : base(message)
+        public WeightErrorException(string message)
+            : base(message)
         {
         }
     }
