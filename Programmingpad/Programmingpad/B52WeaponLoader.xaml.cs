@@ -41,7 +41,7 @@ namespace Programmingpad
             // Allow only positive number in the field
             if (System.Text.RegularExpressions.Regex.IsMatch(FuelTextBox.Text, "[^0-9]"))
             {
-                MessageBox.Show("Enter only number \n");
+                MessageBox.Show("Enter only positive number \n");
                 FuelTextBox.Text = "100000";
             }
             else
@@ -334,8 +334,13 @@ namespace Programmingpad
         private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true)
+            saveFileDialog.Title = "Save loading data to file";
+            saveFileDialog.DefaultExt = ".b52";
+            saveFileDialog.Filter = "B52 Config |*.b52";
+            if (saveFileDialog.ShowDialog() == true && saveFileDialog.FileName != "")
+            {
                 b52.WriteToFile(saveFileDialog.FileName);
+            }
         }
 
         /// <summary>
@@ -344,13 +349,33 @@ namespace Programmingpad
         private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
+            openFileDialog.Title = "Open loading data from file";
+            openFileDialog.DefaultExt = ".b52";
+            openFileDialog.Filter = "B52 Config |*.b52";
+            if (openFileDialog.ShowDialog() == true && openFileDialog.FileName != "")
+            {
                 b52 = b52.ReadFromFile(openFileDialog.FileName);
+            }
 
             IsReady();
             WeightLabel.Content = b52.CalcWeight();
             FuelLabel.Content = b52.Fuel;
         }
 
+        /// <summary>
+        /// Print the object to the pdf file
+        /// </summary>
+        
+        private void SavePDFMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = ".pdf";
+            saveFileDialog.Filter = "PDF |*.pdf";
+            saveFileDialog.Title = "Save loading data to PDF";
+            if (saveFileDialog.ShowDialog() == true && saveFileDialog.FileName != "")
+            {
+                b52.WriteToPdf(saveFileDialog.FileName);
+            }
+        }
     }
 }

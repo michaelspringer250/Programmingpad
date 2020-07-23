@@ -2,6 +2,8 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
@@ -234,11 +236,15 @@ namespace Programmingpad
         /// <param name="path"></param>
         public void WriteToFile(String path)  
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(@path, FileMode.Create, FileAccess.Write);
+            try
+            {
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = new FileStream(@path, FileMode.Create, FileAccess.Write);
 
-            formatter.Serialize(stream, this);
-            stream.Close();
+                formatter.Serialize(stream, this);
+                stream.Close();
+            }
+            catch (Exception) { }
         }
 
         /// <summary>
@@ -252,10 +258,40 @@ namespace Programmingpad
         /// </returns>
         public B52 ReadFromFile(String path)  
         {
-            Stream stream = new FileStream(@path, FileMode.Open, FileAccess.Read);
-            IFormatter formatter = new BinaryFormatter();
-            return (B52)formatter.Deserialize(stream);
-        }  
+            try
+            {
+                Stream stream = new FileStream(@path, FileMode.Open, FileAccess.Read);
+                IFormatter formatter = new BinaryFormatter();
+                return (B52)formatter.Deserialize(stream);
+            }
+            catch (Exception) { return null; }
+        }
+
+        /// <summary>
+        /// Print  the object to pdf file
+        /// </summary>
+      
+        public void WriteToPdf(String path)
+        {
+            try
+            {
+                System.IO.FileStream fs = new FileStream(@path, FileMode.Create, FileAccess.Write);
+                Document document = new Document(PageSize.A4, 25, 25, 30, 30);
+                PdfWriter writer = PdfWriter.GetInstance(document, fs);
+                document.AddTitle("B52 Weapon Config");
+                document.Open();
+                document.Add(new Paragraph("B52 Weapon Configuration\n"));
+                document.Add(new Paragraph(String.Format("Bay Weapon: {0} \n", this.Bay.ToString())));
+                document.Add(new Paragraph(String.Format("Left Wing Weapon: {0} \n", this.LeftWing.ToString())));
+                document.Add(new Paragraph(String.Format("Right Wing Weapon: {0} \n", this.LeftWing.ToString())));
+                document.Add(new Paragraph(String.Format("Weight: {0} \n", this.CalcWeight())));
+                document.Add(new Paragraph(String.Format("Fuel: {0}", this.Fuel)));
+                document.Close();
+                writer.Close();
+                fs.Close();
+            }
+            catch (Exception) { }
+        }
 
     }
 
