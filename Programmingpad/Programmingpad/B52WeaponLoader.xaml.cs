@@ -1,19 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 /*
  * Group 2 - B52 Tinker Project - Programmingpad
@@ -44,12 +36,6 @@ namespace Programmingpad
         /// <summary>
         /// Add fuel into the loader
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void AddFuel(object sender, RoutedEventArgs e)
         {
             // Allow only positive number in the field
@@ -82,12 +68,6 @@ namespace Programmingpad
         /// <summary>
         /// Clear all the weapon from the weapon loader
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void ClearAllWeapons(object sender, RoutedEventArgs e)
         {
             b52.ClearWeapon();
@@ -101,12 +81,6 @@ namespace Programmingpad
         /// <summary>
         /// Clear the fuel from the weapon loader
         /// </summary>
-        /// <param name="sender">
-        /// </param>
-        /// 
-        /// <param name="e">
-        /// 
-        /// </param>
         private void ClearFuel (object sender, RoutedEventArgs e)
         {
             b52.ClearFuel();
@@ -134,12 +108,6 @@ namespace Programmingpad
         /// <summary>
         /// Drag and drop weapon into the weapon loader
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Image i = (Image)sender;
@@ -152,12 +120,6 @@ namespace Programmingpad
         /// <summary>
         /// Drop the weapon into the Left wing
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void LeftWingReg_Drop(object sender, DragEventArgs e)
         {
             /// Mouse drop into the Left wing image area
@@ -192,12 +154,6 @@ namespace Programmingpad
         /// <summary>
         /// Drop the weapon into the Right wing
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void RightWingReg_Drop(object sender, DragEventArgs e)
         {
             /// Mouse drop into the Right wing image area
@@ -232,8 +188,6 @@ namespace Programmingpad
         /// <summary>
         /// Drop the weapon into the Bay
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BayReg_Drop(object sender, DragEventArgs e)
         {
             /// Mouse drop into the Bay image area
@@ -331,12 +285,6 @@ namespace Programmingpad
         /// <summary>
         /// Show the information of weapons in the Left wing
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void LeftWingReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
@@ -347,12 +295,6 @@ namespace Programmingpad
         /// <summary>
         /// Show the information of weapons in the Right wing
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void RightWingReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
@@ -363,12 +305,6 @@ namespace Programmingpad
         /// <summary>
         /// Show the information of weapons in the Bay
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void BayReg_MouseEnter(object sender, MouseEventArgs e)
         {
             ToolTip t = new ToolTip();
@@ -379,12 +315,6 @@ namespace Programmingpad
         /// <summary>
         /// Create the B52 menu
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void B52MenuItem_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new B52WeaponLoader());
@@ -393,12 +323,6 @@ namespace Programmingpad
         /// <summary>
         /// Create the exit menu
         /// </summary>
-        /// <param name="sender">
-        /// 
-        /// </param>
-        /// <param name="e">
-        /// 
-        /// </param>
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Close();
@@ -407,8 +331,6 @@ namespace Programmingpad
         /// <summary>
         /// Save the data into a file
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -419,8 +341,6 @@ namespace Programmingpad
         /// <summary>
         /// Open and read data into application
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
